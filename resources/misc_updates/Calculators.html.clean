@@ -1,0 +1,376 @@
+
+
+# Calculators
+
+From Old School RuneScape Wiki
+
+Jump to navigation Jump to search
+
+The RuneScape Wiki also has an article on: rsw:Calculators
+
+**Calculators** are used to determine experience points and item manufacture
+costs based on real-time prices in the Grand Exchange Market Watch.
+
+## Contents
+
+  * 1 Agility
+  * 2 Construction
+  * 3 Cooking
+  * 4 Crafting
+  * 5 Farming
+  * 6 Firemaking
+  * 7 Fishing
+  * 8 Fletching
+  * 9 Herblore
+  * 10 Hunter
+  * 11 Magic
+  * 12 Mining
+  * 13 Prayer
+  * 14 Runecraft
+  * 15 Slayer
+  * 16 Smithing
+  * 17 Strength
+  * 18 Thieving
+  * 19 Woodcutting
+  * 20 Others
+  * 21 Opportunity costs
+
+  
+  
+---  
+  
+## Agility[edit | edit source]
+
+Calculator  | Format  | Description  
+---|---|---  
+Agility | JavaScript  | Calculates the number of laps that must be completed
+to get from a given level or amount of experience to your selected goal.  
+Agility Arena Tickets | JavaScript  | Calculates the experience from spending
+Brimhaven Agility Arena tickets.  
+  
+## Construction[edit | edit source]
+
+Calculator  | Format  | Description  
+---|---|---  
+Construction | JavaScript  | Calculates the number of construction items
+needed to be built from a given level or amount of experience to your selected
+goal.  
+Material Cost per XP | GEMW  | Calculates the cost per experience gained from
+each material used in Construction.  
+Making Flatpacks | GEMW  | Calculates the profit/losses and cost per
+experience from making flatpacks.  
+  
+## Cooking[edit | edit source]
+
+Calculator  | Format  | Description  
+---|---|---  
+Cooking | JavaScript  | Calculates the number of food items needed to be
+cooked from a given level or amount of experience to your selected goal.  
+Brewing | GEMW  | Calculates the profit/loss from brewing ales, based on the
+assumption that all ingredients are bought.  
+Cooking fish | GEMW  | Calculates the profit/loss from cooking fish, based on
+the assumption that the raw fish are bought.  
+Cooking pies | GEMW  | Calculates the profit/loss from preparing and cooking
+pies based on the assumption that all ingredients are bought.  
+Cooking pizzas | GEMW  | Calculates the profit/loss from buying pizza
+ingredients and putting them together and cooking the pizza.  
+Cooking potatoes | GEMW  | Calculates the profit/loss from preparing potatoes,
+assuming all ingredients are bought.  
+  
+## Crafting[edit | edit source]
+
+Calculator  | Format  | Description  
+---|---|---  
+Crafting | JavaScript  | Calculates how many crafted items are needed from a
+given level or amount of experience to your selected goal.  
+Crafting ranged armour from untanned hides | GEMW  | Calculates the cost of
+using various hides to craft ranging armour using the tanner and Tan Leather
+spell.  
+Crafting ranging armour from tanned hides | GEMW  | Calculates the cost of
+crafting ranging armour from multiple types of tanned or prepared materials.  
+Crafting jewellery | GEMW  | Calculates the cost of using gold and silver
+bars, and gems to craft different types of jewellery.  
+Gem cutting | GEMW  | Calculates the wealth difference from successfully
+cutting gems.  
+Crafting battlestaves | GEMW  | Calculates the profit of making battlestaves
+from unpowered orbs.  
+Glassblowing | GEMW  | Calculates the profit/loss per XP for blowing molten
+glass into various items.  
+Crafting xerician armour | GEMW  | Calculates the cost of using Xerician
+fabric to craft magic armour.  
+Crushed gems | JavaScript  | Calculates the chance of crushing semi-precious
+gems while crafting.  
+Tanning hides | GEMW  | Calculates the profit/loss per hide tanned.  
+Cutting Amethyst | GEMW  | Calculates the profit/loss per amethyst.  
+  
+## Farming[edit | edit source]
+
+Calculator  | Format  | Description  
+---|---|---  
+Farming | JavaScript  | Calculates the number of farming crops required from a
+given level or amount of experience to your selected goal.  
+Herbs | JavaScript  | Calculates the profit and exp/gold for growing herbs  
+Supercompost profit | JavaScript  | Calculates the profit/loss from creating
+supercompost in both regular compost bins and the big compost bin.  
+Trees | GEMW  | Calculates the exp/gp cost/profit for growing trees  
+Saplings | GEMW  | Calculates the gp cost/profit for making saplings  
+  
+## Firemaking[edit | edit source]
+
+Calculator  | Format  | Description  
+---|---|---  
+Firemaking | JavaScript  | Calculates the number of logs to be burnt from a
+given level or amount of experience to your selected goal.  
+Burning Logs | GEMW  | Calculates the cost per XP for burning logs.  
+Wintertodt attacks | JavaScript  | Calculates the standard, brazier and area
+attacks values  
+  
+## Fishing[edit | edit source]
+
+Calculator  | Format  | Description  
+---|---|---  
+Fishing | JavaScript  | Calculates the number of fish needed from a given
+level or amount of experience to your selected goal.  
+Aerial fishing | JavaScript  | Estimates the XP/Hour of the Aerial fishing
+Hunter/Fishing training method.  
+Barbarian Fishing | JavaScript  | Estimated the XP/Hour and success rate of
+Barbarian Fishing training method.  
+  
+## Fletching[edit | edit source]
+
+Calculator  | Format  | Description  
+---|---|---  
+Fletching | JavaScript  | Calculates the number of fletched items needed from
+a given level or amount of experience to your selected goal.  
+Fletching ranged weapons | GEMW  | Calculates the profit/loss from fletching
+and stringing bows, crossbows, and ballistae.  
+Fletching ammo | GEMW  | Calculates the profit/loss from fletching ammo.  
+  
+## Herblore[edit | edit source]
+
+Calculator  | Format  | Description  
+---|---|---  
+Herblore | JavaScript  | Calculates the number of materials needed from a
+given level or amount of experience to your selected goal.  
+Herb cleaning | GEMW  | Calculates the (potential) profit of cleaning herbs.  
+Decanting | GEMW  | Calculates the profit of decanting potions.  
+Unfinished potions | GEMW  | Calculates the costs of making unfinished
+potions.  
+Potions | GEMW  | Calculates the costs of making standard potions.  
+  
+## Hunter[edit | edit source]
+
+Calculator  | Format  | Description  
+---|---|---  
+Hunter | JavaScript  | Calculates the number of hunted creatures needed from a
+given level or amount of experience to your selected goal.  
+Chinchompa success | JavaScript  | Calculates the chance of catching a
+chinchompa.  
+  
+## Magic[edit | edit source]
+
+Calculator  | Format  | Description  
+---|---|---  
+Magic | JavaScript  | Calculates the number of spells needed from a given
+level or amount of experience to your selected goal.  
+Enchantment | GEMW  | Calculates the profit of enchanting jewellery, bolts and
+orbs, while wielding the most efficient elemental staff.  
+Enchanting bolts | GEMW  | Calculates the profit of enchanting bolts.  
+Enchanting jewellery | GEMW  | Calculates the profit of enchanting jewellery.  
+High alchemy | GEMW  | Calculates the profit of casting high level alchemy on
+various items.  
+Magic Dart | JavaScript  | Calculates the max hit of the Magic Dart spell.  
+Making tablets | GEMW  | Calculates the profit of making magic tablets at a
+lectern in a player owned house.  
+  
+## Mining[edit | edit source]
+
+Calculator  | Format  | Description  
+---|---|---  
+Mining | JavaScript  | Calculates the number of ores mined from a given level
+or amount of experience to your selected goal.  
+  
+## Prayer[edit | edit source]
+
+Calculator  | Format  | Description  
+---|---|---  
+Prayer | JavaScript  | Calculates the number of bones or ensouled heads
+required from a given level or amount of experience to your selected goal.  
+Prayer drain | JavaScript  | Calculates the rate of prayer drain given a
+prayer bonus and selected prayers.  
+Bone use | GEMW  | Calculates the costs of buying and using various bones.  
+Ensouled head | GEMW  | Calculates the costs of buying and using various
+ensouled heads.  
+  
+## Runecraft[edit | edit source]
+
+Calculator  | Format  | Description  
+---|---|---  
+Runecraft | JavaScript  | Calculates the number of runecrafted items from a
+given level or amount of experience to your selected goal.  
+Abyssal pearls | JavaScript  | Calculates the number of Rewards guardian
+searches to reach a specific number of pearls  
+ZMI | JavaScript  | Calculates the expected time and essence required from a
+given level or amount of experience to your selected goal at the Ourania
+Altar.  
+  
+## Slayer[edit | edit source]
+
+Calculator  | Format  | Description  
+---|---|---  
+Slayer Assignment Percentages | JavaScript  | Gives percentages for tasks from
+slayer masters based on stats and quests.  
+Slayer Master Comparison | JavaScript  | Calculates the likelihood of getting
+a specific slayer task from each master.  
+  
+## Smithing[edit | edit source]
+
+Calculator  | Format  | Description  
+---|---|---  
+Smithing | JavaScript  | Calculates the number of ores and bars smithed from a
+given level or amount of experience to your selected goal.  
+Giants' Foundry quality experience | JavaScript  | Calculates the experience
+earned from turning in different quality swords in Giants' Foundry.  
+Smithing metal bars | GEMW  | Calculates the cost of smithing metal bars.  
+Smelting metal bars | GEMW  | Calculates the cost of smelting metal bars.  
+Smithing & High Alchemy | GEMW  | Calculates the profit of casting High Level
+Alchemy on the smithed items.  
+  
+## Strength[edit | edit source]
+
+Calculator  | Format  | Description  
+---|---|---  
+Shot put | JavaScript  | Calculates the success rate, distance, token reward,
+run energy cost and experience reward for the Warriors' Guild Shot put range.  
+  
+## Thieving[edit | edit source]
+
+Calculator  | Format  | Description  
+---|---|---  
+Thieving | JavaScript  | Calculates the number of stolen goods from a given
+level or amount of experience to your selected goal.  
+Master farmer success | JavaScript  | Calculates the success rate of master
+farmer pickpocketing.  
+  
+## Woodcutting[edit | edit source]
+
+Calculator  | Format  | Description  
+---|---|---  
+Woodcutting | JavaScript  | Calculates the number of cut logs required from a
+given level or amount of experience to your selected goal.  
+  
+## Others[edit | edit source]
+
+Calculator  | Format  | Description  
+---|---|---  
+Ammo cost efficiency | JavaScript  | Calculates how cost efficient upgrading
+your ammo is.  
+Arceuus Library Books | JavaScript  | Calculates how many books of arcane
+knowledge from the Arceuus Library are needed to reach a target level or
+target XP.  
+Barrows reward | JavaScript  | Calculates the expected rewards of Barrows
+minigame.  
+Barrows item repair | JavaScript  | Calculates the cost to repair Barrows
+equipment.  
+Chambers of Xeric loot | JavaScript  | Calculates the expected rewards of
+doing the Chambers of Xeric.  
+Combat level | JavaScript  | Calculates combat level based on combat skills.  
+Dry calculator | JavaScript  | Calculates the chance of obtaining a drop based
+on how many kills are entered compared to a drop rate entered in.  
+Flipping calculator | JavaScript  | Calculates the profit/loss made with
+flipping.  
+Genie lamps and books of knowledge | JavaScript  | Calculates how many lamps
+or books of knowledge are needed to get to the target level or target XP.  
+Long Term Merchanting | JavaScript  | Calculates your cash after merchanting
+for a set amount of rounds.  
+Kingdom Profit | JavaScript  | Calculates the profit or loss from managing the
+Kingdom of Miscellania.  
+Plank making | GEMW  | Calculates the profit or loss from turning logs into
+planks at the sawmill.  
+Skill pet chance | JavaScript  | Calculates the base chance for each method
+for a pet chosen. Takes in an actions per hour input to adjust the chance in
+an hour.  
+Soul Wars Rewards | GEMW  | Calculates GP/zeal earnings if you buy blighted
+items with your Zeal Tokens and resell them on the Grand Exchange.  
+Swimming experience rates | JavaScript  | Calculates how long it takes to
+reach a target level and compares it to the most efficient methods.  
+Teleportation jewellery | GEMW  | Calculates the cost-per-teleport of using
+jewellery.  
+Tempoross reward pool | GEMW  | Calculates the drop table of a single
+Tempoross reward pool permit.  
+Theatre of Blood loot | JavaScript  | Calculates the expected rewards of doing
+the Theatre of Blood.  
+Wintertodt supply crate | JavaScript  | Calculates the expected rewards from a
+Wintertodt supply crate.  
+  
+## Opportunity costs[edit | edit source]
+
+All raw material costs used in the calculators are based on real-time prices
+from the Grand Exchange Market Watch. This assumes that the player is buying
+items from the Grand Exchange, even if these items are easily obtainable from
+alternative locations.
+
+This is due to the fact that using an item as a raw material prevents the
+player from selling that item on the Grand Exchange, thereby effectively
+"costing" the player the amount of money they could have sold it for. In
+business, this concept is called opportunity cost and should be considered
+when calculating the actual cost using raw materials.
+
+For example:
+
+    When prayer potions are made, snape grass is one of the ingredients (raw material) used for making this potion. Snape grass can easily be found on the Hobgoblin peninsula, south-west of the Crafting Guild, which is south-west of Falador, and also on Waterbirth Island. However, the player could sell the snape grass on the Grand Exchange for 264 coins each. So, using it to make Prayer potions has effectively cost them 264 coins for each potion made, even though they got snape grass free.
+    
+    Furthermore, picking up the snape grass to make the potions will have the opportunity cost of time. This is a very important concept to understand because it will greatly affect your profits. The time you spend picking up snape grass could have been spent on other money-making methods which would be more beneficial. For example, the player could spin flax instead of picking snape grass, then sell the flax and buy more snape grass than they would have been able to pick in the same amount of time.
+
+The same concept applies to any ores mined, or any animal hides collected
+instead of being bought from the Grand Exchange. This may sound counter-
+intuitive, but ignoring it distorts the actual cost of making items and gives
+incorrect figures. That said, while opportunity cost must be considered in a
+microeconomic cost-benefit model, it is important to note that market forces
+sometimes make selling the raw materials (also known as "inputs") difficult.
+It might take a long time, for example, to sell iron ores, but superheating
+them into iron bars for experience and profit could yield a faster turn-around
+on the time investment. In a macroeconomic sense, players must evaluate how
+long they wish to spend, and how much money they have on hand before deciding
+whether to harvest raw materials themselves, or purchase them outright.
+Generally, one will save time by purchasing the raw materials, but one must
+invest more money up-front, and in many instances will not turn a profit.
+Conversely, it will take one longer to harvest raw materials but the initial
+investment is much lower (provided, of course, that you are capable of
+acquiring the raw materials you need in the first place) but in many instances
+to overall profit potential is higher because you are reducing your input
+costs.
+
+If you are harvesting your raw materials, simply calculate with a GE price of
+0 for whatever you happen to be harvesting on your own. For example:
+
+Raw fish  | GE Price  | Cooked fish  | GE Price  | Profit/Loss  | Profit/XP  
+---|---|---|---|---|---  
+![Raw shrimps inventory
+image](https://oldschool.runescape.wiki/images/Raw_shrimps.png?97482) | Raw
+shrimps | 0 | ![Shrimps inventory
+image](https://oldschool.runescape.wiki/images/Shrimps.png?199d1) | Shrimps |
+42 | 42 | 1.40  
+  
+If buying the materials, it is possible to make or lose nothing:
+
+Raw fish  | GE Price  | Cooked fish  | GE Price  | Profit/Loss  | Profit/XP  
+---|---|---|---|---|---  
+![Raw shrimps inventory
+image](https://oldschool.runescape.wiki/images/Raw_shrimps.png?97482) | Raw
+shrimps | 42 | ![Shrimps inventory
+image](https://oldschool.runescape.wiki/images/Shrimps.png?199d1) | Shrimps |
+42 | 0 | 0  
+  
+Or to lose money:
+
+Raw fish  | GE Price  | Cooked fish  | GE Price  | Profit/Loss  | Profit/XP  
+---|---|---|---|---|---  
+![Raw shrimps inventory
+image](https://oldschool.runescape.wiki/images/Raw_shrimps.png?97482) | Raw
+shrimps | 84 | ![Shrimps inventory
+image](https://oldschool.runescape.wiki/images/Shrimps.png?199d1) | Shrimps |
+42 | −42 | -1.40  
+  
+Raw shrimps actually cost 90 on the GE, above prices are examples only.
+

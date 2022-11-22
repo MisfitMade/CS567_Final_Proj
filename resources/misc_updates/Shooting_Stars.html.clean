@@ -1,0 +1,1032 @@
+
+
+# Shooting Stars
+
+From Old School RuneScape Wiki
+
+Jump to navigation Jump to search
+
+The RuneScape Wiki also has an article on: rsw:Shooting Star
+
+**Shooting Stars**  
+---  
+![Shooting
+Stars.png](https://oldschool.runescape.wiki/images/thumb/Shooting_Stars.png/300px-
+Shooting_Stars.png?08932)  
+Released  | 17 March 2021 (Update)  
+Type  | Distraction and Diversion  
+Members | No  
+Location | Global  
+Skills  | Mining  
+Reward currency | Stardust  
+Music | Varies on location of star  
+Location  
+  
+A map of landing sites; zoom out to see more.  
+  
+**Shooting Stars** are a Distraction and Diversion in which a meteor falls
+from the sky approximately every two hours across every in-game server. These
+appear as Crashed Stars that can be mined for stardust, which can be exchanged
+at a shop run by Dusuri at the Mining Guild entrance in Falador.
+
+On every world, a shooting star will fall at a random spot selected from a
+predetermined list roughly every two hours (with a variation of up to 15
+minutes), although stars on different worlds may fall closer in time to one
+another, or even at the same time.
+
+Although the activity is available in free-to-play worlds, players only get
+awarded half the experience points. On top of that, Dusuri's Star Shop, where
+players can exchange rewards for stardust, is members only.
+
+## Contents
+
+  * 1 Locating
+  * 2 Mining
+    * 2.1 Star sizes
+    * 2.2 Notes
+  * 3 Rewards
+  * 4 Landing sites
+    * 4.1 Asgarnia
+    * 4.2 Crandor and Karamja
+    * 4.3 Feldip Hills and the Isle of Souls
+    * 4.4 Fossil Island and Mos Le'Harmless
+    * 4.5 Fremennik Lands and Lunar Isle
+    * 4.6 Great Kourend
+    * 4.7 Kandarin
+    * 4.8 Kebos Lowlands
+    * 4.9 Kharidian Desert
+    * 4.10 Misthalin
+    * 4.11 Morytania
+    * 4.12 Piscatoris and the Gnome Stronghold
+    * 4.13 Tirannwn
+    * 4.14 Wilderness
+  * 5 Historical
+  * 6 Changes
+  * 7 Developers
+  * 8 References
+
+## Locating[edit | edit source]
+
+![](https://oldschool.runescape.wiki/images/thumb/Shooting_Stars_-
+_telescope_view.png/300px-Shooting_Stars_-_telescope_view.png?87f63)
+
+A shooting star viewed through a telescope.
+
+Members can use a telescope in a study room in a player-owned house to find
+the approximate area and time of the next landing. It is also possible to use
+telescopes in another player's house for this purpose.
+
+  * If the telescope is blocked by another room in the house, including outdoor rooms such as the Menagerie, or the room is underground, it will not work.
+  * Better telescopes provide a more accurate time window: 
+    * Oak telescope \- 24-minute window
+    * Teak telescope \- 9-minute window
+    * Mahogany telescope \- 2-minute window
+  * If a star has recently fallen, the following text appears: 
+    * "You look through the telescope but you don’t see anything interesting."
+
+Join the Shooting Stars grouping chat to share locations with other players.
+It is very likely that these star locations will be very crowded, especially
+in safe areas with few requirements to access.
+
+## Mining[edit | edit source]
+
+![](https://oldschool.runescape.wiki/images/Shooting_Star_crashing.gif?2f51a)
+
+A shooting star crashing, becoming a size-5 crashed star.
+
+Crashed Stars come in sizes from 1 to 9. Players can find out how large the
+star is by prospecting it. Additionally, prospecting it will reveal the
+progress to the next level. (See _Star sizes_ below for experience for each
+star size.)
+
+![Audio options
+icon.png](https://oldschool.runescape.wiki/images/Audio_options_icon.png?84afb)
+
+| **Crashed Star discovered**  
+---|---  
+  
+The jingle that plays upon discovering a crashed star.  
+  
+The first person to attempt to mine the crashed star will be notified in the
+chatbox that they are the first to find the star, and a jingle will play
+alongside the chatbox message. In addition, their name will be added to the
+Shooting Star Noticeboard in the reception room north of the Observatory; up
+to five players are displayed on the noticeboard.
+
+Each layer of the star is mined from 0% to 100%, at which point the outermost
+layer sloughs off, and the star's size is reduced by one tier. The amount left
+to mine of the current layer can be determined by prospecting while mining.
+The more people mining a star, the faster one can expect to get through the
+layers.
+
+Players will receive stardust as they mine the crashed star, receiving
+experience each time a piece of stardust is mined. A roll for mining stardust
+is performed regularly based on the strength of your pickaxe, with the mining
+chance for each roll shown in the table below. There is also a chance players
+may receive additional stardust depending on the star size. Mining enhancers
+that multiply yield do **not** work on crashed stars.
+
+Players may receive a rock golem whilst mining, where the chance is scaled off
+the size of the star. If mining at the Trahaearn mine entrance, there is also
+a 1/127 chance of obtaining a crystal shard.
+
+A star can only deplete at a maximum rate of 3 stardust per game tick. For
+example, if 8 players successfully mine the same star on the same tick, they
+will all still receive loot as normal, but the star's remaining "health" bar
+will only decrease by 3 points. This means, for example, that the final layer
+of a star will always last at least 4 minutes, regardless of the amount of
+players mining it at once.
+
+Once the final layer (when the star is size one) is fully mined, the star will
+crumble and disappear. Stars will also disappear if they have not been fully
+mined once a new star crashes within the same region. Players can exchange
+stardust via a shop run by Dusuri at the Mining Guild entrance on the surface.
+
+### Star sizes[edit | edit source]
+
+Size  |
+![Mining](https://oldschool.runescape.wiki/images/thumb/Mining_icon.png/21px-
+Mining_icon.png?00870) Level  | Crash chance[1] | Stardust available  |
+Additional dust chance  | XP per dust  | Total XP  | Cumulative XP  | Min.
+layer duration  | Min. total duration  | Success % 1 - 99[2] | XP/Hour at
+level 1[3] | XP/Hour at level 99[3]  
+---|---|---|---|---|---|---|---|---|---|---|---|---  
+9 | 90 | 3% | 15 | 90% | 244 | 3660  | 78110  | 3 seconds  | 9.76 minutes  |
+6% - 7%  | 29280  | 34160  
+8 | 80 | 5% | 40 | 72% | 162 | 6480  | 74450  | 8 seconds  | 9.71 minutes  |
+7% - 10%  | 22680  | 32400  
+7 | 70 | 9% | 40 | 56% | 123 | 4920  | 67970  | 8 seconds  | 9.58 minutes  |
+9% - 13%  | 22140  | 31980  
+6 | 60 | 12% | 80 | 42% | 74 | 5920  | 63050  | 16 seconds  | 9.44 minutes  |
+15% - 20%  | 22200  | 29600  
+5 | 50 | 17% | 175 | 30% | 48 | 8400  | 57130  | 35 seconds  | 9.18 minutes  |
+23% - 30%  | 22080  | 28800  
+4 | 40 | 20% | 300 | 20% | 31 | 7750  | 48730  | 50 seconds  | 8.59 minutes  |
+30% - 44%  | 18600  | 27280  
+3 | 30 | 18% | 430 | 12% | 26 | 11180  | 40980  | 1.43 minutes  | 7.66 minutes
+| 30% - 49%  | 15600  | 25480  
+2 | 20 | 16% | 700 | 6% | 22 | 15400  | 29800  | 2.33 minutes  | 6.33 minutes
+| 30% - 57%  | 13200  | 25080  
+1 | 10 | 0% | 1,200 | 2% | 12 | 14400  | 14400  | 4 minutes  | 4 minutes  |
+30% - 100%  | 7200  | 24000  
+  
+  1. **^** Jagex. Mod Ash's Twitter account. 21 May 2021. (Archived from the original on 21 May 2021.) Mod Ash: "[What are the probabilities for star spawning any given size?] Looks to me like it'd be: 16% - 2 18% - 3 20% - 4 17% - 5 12% - 6 9% - 7 5% - 8 3% - 9" 
+  2. **^** Jagex. Mod Ash's Twitter account. 24 April 2022. (Archived from the original on 26 April 2022.) Mod Ash: ":) Chances are cited for level 1, and for level 99. Interpolate linearly between them for levels in between, as usual. 9: 6% - 7% 8: 7% - 10% 7: 9% - 13% 6: 15% - 20% 5: 23% - 30% 4: 30% - 44% 3: 30% - 49% 2: 30% - 57% 1: 30% - 100%" 
+  3. ^ 3.0 3.1 Assuming a Rune Pickaxe, for consistency. Interpolate linearly between levels 1 and 99 to determine a rate for a given Mining level.
+
+At max size, a star has a minimum of 2930 Stardust and offers 78110
+experience.
+
+### Notes[edit | edit source]
+
+  * The Star fall cycle will reset during a system update and stars on the ground before the update will vanish.
+  * It is possible that the telescopes of two POH will show different timers. (For example, one might say its 10–12 minutes away while the other says 9–11 minutes). In this case the landing time is narrowed down to the time when the timers overlap (In this case in 10–11 minutes)
+  * Only one star can crash per given world at a time. If a star is not mined or finished being mined, it will automatically despawn when the next star falls.
+  * Higher star sizes will give less total stardust than at lower sizes, so for the same number of miners, a high star size reduces to the next size faster than for a low star size.
+  * The experience given for mining stardust is halved in free-to-play.
+
+## Rewards[edit | edit source]
+
+Main article: Dusuri's Star Shop
+
+Stardust is obtained by mining the crashed star. Stardust is used as currency
+at Dusuri's Star Shop to purchase the celestial ring along with other rewards.
+
+Dusuri's Star Shop  Reward  | Price  
+---|---  
+![Celestial ring#Uncharged inventory
+image](https://oldschool.runescape.wiki/images/Celestial_ring_\(uncharged\).png?273ca)
+| Celestial ring (uncharged) | ![Stardust
+175.png](https://oldschool.runescape.wiki/images/Stardust_175.png?d7a80) 2,000  
+![Star fragment inventory
+image](https://oldschool.runescape.wiki/images/Star_fragment.png?c943f) | Star
+fragment | ![Stardust
+175.png](https://oldschool.runescape.wiki/images/Stardust_175.png?d7a80) 3,000  
+![Bag full of gems#Stardust inventory
+image](https://oldschool.runescape.wiki/images/Bag_full_of_gems_\(stardust\).png?2baad)
+| Bag full of gems | ![Stardust
+175.png](https://oldschool.runescape.wiki/images/Stardust_175.png?d7a80) 300  
+![Soft clay pack#Stardust inventory
+image](https://oldschool.runescape.wiki/images/Soft_clay_pack.png?44c1f) |
+Soft clay pack | ![Stardust
+125.png](https://oldschool.runescape.wiki/images/Stardust_125.png?4748f) 150  
+  
+Experience rates vary greatly based on level, the tier of pickaxe used, and
+time spent locating stars. If mining consistently, players can expect
+approximately 20,000 experience per hour.
+
+## Landing sites[edit | edit source]
+
+Members may make use of a telescope to reveal the general area in which the
+star will fall, wherein there are a number of set locations in which the star
+may land.
+
+The only way to locate the actual crash site is to search each possible crash
+site in the given area until the crashed star is found; this process, as well
+as the mining process, can be greatly expedited with the assistance of other
+players.
+
+### Asgarnia[edit | edit source]
+
+Location  | Fastest way to get there  | Map  
+---|---|---  
+Dwarven Mine northern entrance  |
+
+  * Lassar Teleport
+  * Combat bracelet to Monastery
+  * Skull sceptre
+
+| Maplink  
+Mining Guild entrance  |
+
+  * Skills necklace to Mining Guild
+  * Ring of wealth to Falador Park
+  * Falador Teleport
+
+| Maplink  
+West Falador mine |
+
+  * Falador Teleport with 5 agility to use the Crumbling wall (Falador)
+  * Skills necklace to Crafting Guild
+  * Crafting Cape
+  * Balloon transport system
+
+| Maplink  
+Taverley (White Wolf Tunnel entrance)  |
+
+  * Teleport to House (Taverley)
+  * Games Necklace to Burthorpe
+  * Combat Bracelet to the Warriors' Guild
+
+| Maplink  
+Crafting Guild |
+
+  * Skills necklace
+  * Crafting cape
+  * Teleport to House (Rimmington)
+  * Balloon transport system
+  * Ring of the elements to Air Altar
+
+| Maplink  
+Rimmington mine |
+
+  * Teleport to House (Rimmington)
+  * Minigame teleport to the Rat Pits of Port Sarim
+  * Explorer's ring
+  * Ring of the elements to Air Altar
+
+| Maplink  
+  
+### Crandor and Karamja[edit | edit source]
+
+Location  | Fastest way to get there  | Map  
+---|---|---  
+South Crandor mine |
+
+  * Achievement diary cape to TzHaar-Mej
+  * Fairy ring (code **b** **l** **p** )
+  * Minigame teleport to the TzHaar Fight Pit
+  * Amulet of glory to Karamja
+
+| Maplink  
+North Crandor mine |
+
+  * Achievement diary cape to TzHaar-Mej
+  * Fairy ring (code **b** **l** **p** )
+  * Minigame teleport to the TzHaar Fight Pit
+  * Amulet of glory to Karamja
+
+| Maplink  
+North Brimhaven mine |
+
+  * **b** **j** **r** and a magic whistle
+  * Teleport to House (Brimhaven)
+  * Amulet of glory to Karamja
+
+| Maplink  
+South Brimhaven mine |
+
+  * Teleport to House (Brimhaven)
+  * Tai bwo wannai teleport
+
+| Maplink  
+Karamja Jungle mine (Nature Altar)  |
+
+  * Tai bwo wannai teleport
+  * Fairy ring (code **c** **k** **r** )
+  * Nature Altar via Abyss
+
+| Maplink  
+Shilo Village mine |
+
+  * Karamja gloves 3
+  * Achievement diary cape to Kaleb Paramaya
+  * Shilo Village cart system (accessed from Brimhaven for 10 coins - Spirit Tree, Achievement diary cape to Pirate Jackie the Fruit, or Teleport to House (Brimhaven))
+
+| Maplink  
+  
+### Feldip Hills and the Isle of Souls[edit | edit source]
+
+Location  | Fastest way to get there  | Map  
+---|---|---  
+Feldip Hunter area |
+
+  * Fairy ring (code **a** **k** **s** )
+
+| Maplink  
+Rantz's cave |
+
+  * Fairy ring (code **a** **k** **s** )
+
+| Maplink  
+Corsair Cove |
+
+  * Charter ship
+  * Spirit Tree
+  * Cabin Boy Colin in Rimmington
+  * Hunter cape to Carnivorous chinchompas
+  * Mythical cape
+
+| Maplink  
+Corsair Cove Resource Area |
+
+  * Spirit Tree
+  * Mythical cape
+  * Hunter cape to Carnivorous chinchompas
+
+| Maplink  
+Myths' Guild |
+
+  * Mythical cape
+  * Spirit Tree
+
+| Maplink  
+Isle of Souls mine |
+
+  * Amulet of glory to Edgeville
+  * Ring of dueling to Ferox enclave, and enter the dungeon
+
+| Maplink  
+  
+### Fossil Island and Mos Le'Harmless[edit | edit source]
+
+Location  | Fastest way to get there  | Map  
+---|---|---  
+Fossil Island mine |
+
+  * Volcanic mine teleport
+  * Digsite pendant to Digsite, boat to Fossil Island
+
+| Maplink  
+Volcanic Mine entrance  |
+
+  * Volcanic mine teleport
+  * Digsite pendant to House on the Hill, Mycelium Transportation System to Verdant Valley
+
+| Maplink  
+Mos Le'Harmless |
+
+  * Mos le'harmless teleport
+  * Charter ship
+  * Harmony Island Teleport
+  * Ectophial
+
+| Maplink  
+  
+### Fremennik Lands and Lunar Isle[edit | edit source]
+
+Location  | Fastest way to get there  | Map  
+---|---|---  
+Rellekka mine |
+
+  * Fremennik sea boots (any tier)
+  * Enchanted lyre to Rellekka
+  * Teleport to House (Rellekka)
+  * Achievement diary cape to Thorodin
+
+| Maplink  
+Keldagrim entrance mine |
+
+  * Fairy ring (code **d** **k** **s** )
+  * Slayer ring to Rellekka Slayer Caves
+
+| Maplink  
+Miscellania mine |
+
+  * Fairy ring (code **c** **i** **p** )
+  * Ring of wealth to Miscellania
+  * Fremennik sea boots
+
+| Maplink  
+Jatizso mine entrance  |
+
+  * Enchanted lyre to Jatizso
+  * Fremennik sea boots
+  * Enchanted lyre to Rellekka
+  * Teleport to House (Rellekka)
+
+| Maplink  
+Central Fremennik Isles mine |
+
+  * Enchanted lyre to Neitiznot
+  * Fremennik sea boots
+  * Enchanted lyre to Rellekka
+  * Teleport to House (Rellekka)
+
+| Maplink  
+Lunar Isle mine entrance  |
+
+  * Moonclan Teleport
+  * Lunar Home Teleport
+  * Lunar isle teleport
+
+| Maplink  
+  
+### Great Kourend[edit | edit source]
+
+Location  | Fastest way to get there  | Map  
+---|---|---  
+Hosidius mine |
+
+  * Teleport to House (Hosidius)
+  * Grouping teleport (Tithe Farm)
+  * Xeric's talisman (Xeric's Glade)
+
+| Maplink  
+Shayzien mine |
+
+  * Kourend Castle Teleport
+  * Xeric's talisman (Xeric's Heart)
+
+| Maplink  
+Port Piscarilius mine |
+
+  * Kharedst's memoirs/Book of the dead (The Fisher's Flute)
+  * Lovakengj Minecart Network
+  * Kourend Castle Teleport
+
+| Maplink  
+Dense essence mine |
+
+  * Arceuus Home Teleport
+  * Fairy ring (code **c** **i** **s** )
+  * Kharedst's memoirs/Book of the dead (A Dark Disposition)
+
+| Maplink  
+Lovakite mine |
+
+  * Xeric's talisman (Xeric's Inferno)
+
+| Maplink  
+Lovakengj (bank)  |
+
+  * Kharedst's memoirs/Book of the dead (Jewellery of Jubilation)
+  * Xeric's talisman (Xeric's Inferno)
+  * Lovakengj Minecart Network
+
+| Maplink  
+  
+### Kandarin[edit | edit source]
+
+Location  | Fastest way to get there  | Map  
+---|---|---  
+Catherby bank  |
+
+  * Catherby Teleport
+  * Camelot Teleport
+
+| Maplink  
+Yanille bank  |
+
+  * Watchtower Teleport to Yanille
+  * Grouping teleport  
+(Nightmare Zone)
+
+  * Teleport to House (Yanille)
+  * regular Watchtower Teleport
+
+| Maplink  
+Port Khazard mine |
+
+  * Ardougne cloak
+  * Grouping teleport  
+(Nightmare Zone/Fishing Trawler)
+
+  * Watchtower Teleport
+
+| Maplink  
+Legends' Guild mine |
+
+  * Quest cape
+  * Ardougne Teleport
+  * Fairy ring (code **b** **l** **r** )
+
+| Maplink  
+Coal Trucks |
+
+  * Combat bracelet to the Ranging Guild
+  * Fishing cape or Skills necklace to the Fishing Guild
+  * Fairy ring (code **a** **l** **s** )
+  * Camelot Teleport to Seers Village
+  * Camelot Teleport
+
+| Maplink  
+South-east Ardougne mine (monastery)  |
+
+  * Ardougne cloak
+  * Fairy ring (code **d** **j** **p** )
+
+| Maplink  
+  
+### Kebos Lowlands[edit | edit source]
+
+Location  | Fastest way to get there  | Map  
+---|---|---  
+Kebos Lowlands mine (Kebos Swamp)  |
+
+  * Skills necklace or Farming cape to the Farming Guild
+  * Fairy ring (code **c** **i** **r** )
+
+| Maplink  
+Mount Karuulm mine |
+
+  * Rada's blessing 3 or 4
+  * Fairy ring (code **c** **i** **r** )
+
+| Maplink  
+Mount Karuulm (bank)  |
+
+  * Rada's blessing 3 or 4
+  * Fairy ring (code **c** **i** **r** )
+
+| Maplink  
+Mount Quidamortem (bank)  |
+
+  * Xeric's talisman (Xeric's Honour)
+  * Lovakengj Minecart Network
+  * Mountain Guide
+
+| Maplink  
+  
+### Kharidian Desert[edit | edit source]
+
+Location  | Fastest way to get there  | Map  
+---|---|---  
+Al Kharid mine |
+
+  * Ring of the elements to Fire Altar
+  * Ring of dueling to the Emir's Arena
+
+| Maplink  
+Al Kharid (bank)  |
+
+  * Amulet of glory to Al Kharid
+  * Gnome Glider to Kar-Hewo
+  * Ring of dueling to the Emir's Arena
+
+| Maplink  
+Uzer mine |
+
+  * Necklace of passage to the Eagle's Eyrie
+  * Magic carpet from Shantay Pass to Uzer
+
+| Maplink  
+Desert quarry |
+
+  * Camulet to the Mine Entrance
+  * Pharaoh's sceptre to Jaldraocht
+  * Ferry from Al Kharid to the Ruins of Unkah
+
+| Maplink  
+Agility Pyramid mine |
+
+  * Pharaoh's sceptre to Jalsavrah, exit pyramid, climb through hole in the eastern wall of Sophanem
+  * Nardah teleport
+  * Desert amulet 2, 3 or 4
+
+| Maplink  
+Nardah |
+
+  * Nardah teleport
+  * Desert amulet 2, 3 or 4
+  * Fairy ring (code **d** **l** **q** )
+
+| Maplink  
+Emir's Arena |
+
+  * Ring of dueling to the Emir's Arena
+
+| Maplink  
+  
+### Misthalin[edit | edit source]
+
+Location  | Fastest way to get there  | Map  
+---|---|---  
+East Lumbridge Swamp mine |
+
+  * Ring of the elements to Water Altar
+  * Achievement diary cape to Hatius Cosaintus
+  * Lumbridge Teleport
+  * Lumbridge home teleport
+
+| Maplink  
+West Lumbridge Swamp mine |
+
+  * Ring of the elements to Water Altar
+  * Fairy ring to Zanaris, exit to shed via the fairy ring near the Evil Chicken's Lair
+  * Achievement diary cape to Twiggy O'Korn
+  * Fairy ring (code **b** **i** **q** ); Mith grapple and crossbow required
+  * Necklace of passage to the Wizards' Tower
+  * Glory amulet to Draynor Village
+  * Lumbridge Teleport
+
+| Maplink  
+Draynor Village |
+
+  * Achievement diary cape to Twiggy O'Korn
+  * Amulet of glory to Draynor Village
+
+| Maplink  
+Varrock (East bank)  |
+
+  * Achievement diary cape to Toby
+  * Varrock Teleport
+
+| Maplink  
+South-east Varrock mine |
+
+  * Senntisten Teleport
+  * Chronicle teleport
+  * Combat bracelet to the Champions' Guild
+
+| Maplink  
+South-west Varrock mine |
+
+  * Chronicle teleport
+  * Combat bracelet to the Champions' Guild
+
+| Maplink  
+  
+### Morytania[edit | edit source]
+
+Location  | Fastest way to get there  | Map  
+---|---|---  
+Canifis (bank)  |
+
+  * Kharyrll Teleport
+  * Fairy ring (code **c** **k** **s** )
+  * Salve Graveyard Teleport
+
+| Maplink  
+Burgh de Rott (bank)  |
+
+  * Morytania legs 3 or 4
+  * Mort'ton teleport
+  * Grouping teleport  
+(Shades of Mort'ton)
+
+| Maplink  
+Abandoned Mine |
+
+  * Morytania legs 3 or 4
+  * Mort'ton teleport
+  * Grouping teleport  
+(Shades of Mort'ton)
+
+| Maplink  
+Ver Sinhaza (bank)  |
+
+  * Drakan's medallion to Ver Sinhaza
+  * Andras' boat
+
+| Maplink  
+Daeyalt essence mine entrance  |
+
+  * Hallowed crystal shard
+  * Drakan's medallion (Darkmeyer)
+
+| Maplink  
+  
+### Piscatoris and the Gnome Stronghold[edit | edit source]
+
+Location  | Fastest way to get there  | Map  
+---|---|---  
+Piscatoris mine |
+
+  * Piscatoris teleport
+  * Fairy ring (code **a** **k** **q** )
+  * Western banner 3 or 4
+
+| Maplink  
+Grand Tree |
+
+  * Grand seed pod or Royal seed pod
+  * Achievement diary cape to Western Provinces
+  * Spirit tree to Gnome Stronghold
+  * Balloon transport system
+  * Gnome glider
+
+| Maplink  
+Tree Gnome Stronghold bank  |
+
+  * Spirit tree to Gnome Stronghold
+  * Slayer ring to Stronghold Slayer Cave
+  * Achievement diary cape to Western Provinces
+  * Balloon transport system
+  * Grand seed pod or Royal seed pod
+
+| Maplink  
+  
+### Tirannwn[edit | edit source]
+
+Location  | Fastest way to get there  | Map  
+---|---|---  
+Isafdar mine |
+
+  * Teleport crystal to Lletya
+
+| Maplink  
+Arandar mine |
+
+  * Iorwerth camp teleport
+  * Necklace of passage
+  * Teleport crystal to Prifddinas
+
+| Maplink  
+Lletya |
+
+  * Teleport crystal to Lletya
+
+| Maplink  
+Trahaearn mine entrance  |
+
+  * Teleport crystal to Prifddinas
+  * Spirit Tree to Prifddinas
+  * Teleport to House (Prifddinas)
+
+| Maplink (Prifddinas)
+
+Maplink (overworld)  
+  
+Mynydd mine |
+
+  * Charter ship to Prifddinas
+  * Spirit Tree to Prifddinas
+  * Teleport to House (Prifddinas)
+  * Teleport crystal to Prifddinas
+
+| Maplink  
+  
+### Wilderness[edit | edit source]
+
+Location  | Fastest way to get there  | Map  
+---|---|---  
+South Wilderness mine (Mage of Zamorak)  |
+
+  * Achievement diary cape to the Lesser Fanatic
+  * Amulet of glory to Edgeville
+  * Ring of dueling to Ferox Enclave
+
+| Maplink  
+South-west Wilderness mine (South of Dark Warriors' Fortress)  |
+
+  * Burning amulet to the Bandit Camp
+  * Mind Altar Teleport
+  * Dareeyak Teleport
+  * Combat Bracelet to the Monastery
+
+| Maplink  
+Bandit Camp mine (Hobgoblins)  |
+
+  * Wilderness Obelisk to level 35 or 27 Wilderness
+  * Cemetery Teleport
+  * Ring of dueling to Ferox Enclave
+  * Burning amulet to the Lava Maze or Bandit Camp
+
+| Maplink  
+Lava Maze runite mine |
+
+  * Wilderness Obelisk to level 44 Wilderness
+  * Ice Plateau Teleport
+  * Ghorrock Teleport
+  * Burning amulet to the Lava Maze
+
+| Maplink  
+Resource Area |
+
+  * Deserted Keep lever
+
+| Maplink  
+Mage Arena |
+
+  * Deserted Keep lever
+
+| Maplink  
+Pirates' Hideout mine |
+
+  * Deserted Keep lever
+  * Ice Plateau Teleport
+  * Ghorrock Teleport
+
+| Maplink  
+  
+## Historical[edit | edit source]
+
+As a piece of content brought into _Old School RuneScape_ via backporting,
+Shooting Stars were originally released on 2 September 2008 in _RuneScape_ as
+one of three Distractions and Diversions, alongside Balthazar Beauregard's Big
+Top Bonanza and Penguin Hide and Seek.
+
+Like most content backported into _Old School RuneScape_ , the Shooting Stars
+for _Old School_ has a few differences which aim to better adapt it for _Old
+School RuneScape_.
+
+  * _RuneScape_ has 44 possible landing sites; _Old School RuneScape_ has 76.
+  * Originally, Shooting Stars were only available for members. This was changed on 9 October 2017 in _RuneScape_. 
+    * On free-to-play worlds, Shooting Stars may crash in a members area, rendering it out of reach.
+    * Mining experience is half of what it usually is for members.
+  * There is no additional experience given for the first player who mines the fallen star.
+  * Players receive a reduced amount of experience per stardust.
+  * In _RuneScape,_ players could hold only up to 200 stardust, and could only exchange it once per day. _Old School RuneScape_ does not have either of these limits.
+  * Star Sprites do not exist in _Old School RuneScape_ ; rewards are exchanged for stardust via a shop run by Dusuri instead.
+
+## Changes[edit | edit source]
+
+Date  | Changes  
+---|---  
+10 November 2021  
+(update)  |
+
+Shooting Stars now have a chance to land in Darkmeyer, as previously intended.  
+  
+30 June 2021  
+(update | poll)  |
+
+Experience from mining crashed stars have been increased per stardust mined.  
+  
+24 March 2021  
+(update)  |
+
+  * Shooting Stars should now deplete more slowly when large groups are mining them.
+  * Cannons can once again be placed where a Shooting Star would land. However, if a Star lands on it, it will be destroyed and will need to be reclaimed from Nulodion.
+  * There is now a chance players might receive additional stardust when mining Shooting Stars.
+
+  
+17 March 2021  
+| Hotfix
+
+Players with the Twisted, Hosidius, and Cosy Cabin house styles can now
+properly use the telescope.  
+  
+## Developers[edit | edit source]
+
+  * **Main developer(s)** : Mod Ed and Mod Lenny
+  * **Quality Assurance** : Mod Curse
+  * **Art** : Mod Ry
+
+## References[edit | edit source]
+
+v • d • e
+
+Shooting Stars  
+  
+---  
+NPCs|
+
+  * ![Chathead image of Dusuri](https://oldschool.runescape.wiki/images/thumb/Dusuri_chathead.png/19px-Dusuri_chathead.png?39920)Dusuri
+  * ![Chathead image of Observatory assistant](https://oldschool.runescape.wiki/images/thumb/Observatory_assistant_chathead.png/27px-Observatory_assistant_chathead.png?9d671)Observatory assistant
+  * ![Chathead image of Star Sprite](https://oldschool.runescape.wiki/images/thumb/Star_Sprite_chathead.png/31px-Star_Sprite_chathead.png?599f2)Star Sprite (unreleased)
+
+  
+Dusuri's Star Shop| | Currency|
+
+  * ![Stardust inventory image](https://oldschool.runescape.wiki/images/Stardust_175.png?d7a80)Stardust
+
+  
+---|---  
+Golden prospector kit|
+
+  * ![Golden prospector helmet inventory image](https://oldschool.runescape.wiki/images/Golden_prospector_helmet.png?99c22)Helmet
+  * ![Golden prospector jacket inventory image](https://oldschool.runescape.wiki/images/Golden_prospector_jacket.png?3d117)Jacket
+  * ![Golden prospector legs inventory image](https://oldschool.runescape.wiki/images/Golden_prospector_legs.png?3d117)Legs
+  * ![Golden prospector boots inventory image](https://oldschool.runescape.wiki/images/Golden_prospector_boots.png?fc2ef)Boots
+
+  
+Other items|
+
+  * ![Celestial ring inventory image](https://oldschool.runescape.wiki/images/Celestial_ring.png?273ca)Celestial ring (signet)
+  * ![Star fragment inventory image](https://oldschool.runescape.wiki/images/Star_fragment.png?c943f)Star fragment
+  * ![Bag full of gems#Stardust inventory image](https://oldschool.runescape.wiki/images/Bag_full_of_gems_\(stardust\).png?2baad)Bag full of gems
+  * ![Soft clay pack inventory image](https://oldschool.runescape.wiki/images/Soft_clay_pack.png?44c1f)Soft clay pack
+  * ![Essence pack inventory image](https://oldschool.runescape.wiki/images/Essence_pack.png?b8cf0)Essence pack (unobtainable)
+
+  
+Objects|
+
+  * ![Oak telescope icon.png](https://oldschool.runescape.wiki/images/Oak_telescope_icon.png?10803) Oak telescope
+  * ![Teak telescope icon.png](https://oldschool.runescape.wiki/images/Teak_telescope_icon.png?10803) Teak telescope
+  * ![Mahogany telescope icon.png](https://oldschool.runescape.wiki/images/Mahogany_telescope_icon.png?47a62) Mahogany telescope
+  * Crashed Star
+  * Shadow
+  * Shooting Star Noticeboard
+
+  
+  
+v • d • e
+
+Solo and Team Activities  
+  
+---  
+Solo| | |
+
+  * Camdozaal Vault
+  * Creature Creation
+  * Dorgesh-Kaan market trading
+  * Gnome Ball
+  * Gnome Restaurant
+  * Impetuous Impulses
+  * Keldagrim tasks
+  * Ranging Guild Activities
+  * Rat Pits
+  * Rogue Trader
+  * Rogues' Den
+  * Tai Bwo Wannai Cleanup
+  * Tears of Guthix
+  * Temple Trekking
+  * Wise Old Man tasks
+
+  
+---|---  
+Skilling|
+
+  * Blast mine
+  * Brimhaven Agility Arena
+  * Giants' Foundry
+  * Hallowed Sepulchre
+  * Mage Training Arena
+  * Pyramid Plunder
+  * Sorceress's Garden
+  * Stealing artefacts
+  * Tithe Farm
+
+  
+Combat|
+
+  * Barrows
+  * The Gauntlet
+  * Inferno
+  * Mage Arena
+  * TzHaar Fight Cave
+  * TzHaar-Ket-Rak's Challenges
+
+  
+Team| | |
+
+  * Barbarian Assault
+  * Burthorpe Games Room
+  * Games Zone
+  * Nightmare Zone
+  * Pest Control
+  * Shades of Mort'ton
+  * Tackle organised crime
+  * Trouble Brewing
+
+  
+---|---  
+Skilling|
+
+  * Blast Furnace
+  * Fishing Trawler
+  * Guardians of the Rift
+  * Volcanic Mine
+
+  
+Raids|
+
+  * Chambers of Xeric
+  * Theatre of Blood
+  * Tombs of Amascut
+
+  
+PvP|
+
+  * Bounty Hunter
+  * Castle Wars
+  * Clan Wars
+  * Emir's Arena
+  * Last Man Standing
+  * Soul Wars
+  * TzHaar Fight Pit
+
+  
+D&D|
+
+  * Champions' Challenge
+  * Shooting Stars
+  * Treasure Trails
+
+  
+  
+
+‘https://oldschool.runescape.wiki/w/Shooting_Stars?oldid=14330834’
+

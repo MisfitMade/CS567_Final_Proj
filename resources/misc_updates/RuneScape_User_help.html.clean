@@ -1,0 +1,109 @@
+
+
+# RuneScape:User help
+
+From Old School RuneScape Wiki
+
+Jump to navigation Jump to search
+
+The RuneScape Wiki also has an article on: rsw:RuneScape:User helpThe
+RuneScape Classic Wiki also has an article on: classicrsw:RuneScape:User help
+
+This article is about requests for help from general users. For requests for
+help needing administrator tools, see RuneScape:Administrator requests.
+
+Shortcuts:
+
+  * RS:HELP
+  * RS:UH
+  * RS:UR
+
+Welcome to the **Old School RuneScape Wiki User Help** page. This page is here
+to offer a central location for those who are participating with the
+development of this wiki to make general requests for help. For admin help,
+click here.
+
+**Note for requesters** \- Once a solution has been presented and implemented,
+please add a comment signifying completion, if the request hasn't already been
+archived. This is to help other users know when to archive completed requests.
+
+## Instructions[edit source]
+
+### What this page _is_ for[edit source]
+
+  * **Coding help.** Requesting help with writing templates, making a nice user page, or any questions on writing wiki-code can be asked here and users will help to the best of their ability.
+  * **Requests for non-administrative actions.** If help is required with an action (such as moving a page), asking users here for help with that action is acceptable.
+  * **Questions on how the wiki works.** All the policies and processes in use on the Old School RuneScape Wiki may seem a little overwhelming at first. If you need help in understanding any of the policies, or more in depth instructions on a process, asking here is a good start.
+  * **Other questions to the users of the wiki.** While the Redwood Grove is often a better place, a simple question may be asked here for a quick response.
+  * **An all-in-one place to put things.** Many of the wiki's procedures are lesser-known, so putting a note here is a good way to do something if the correct procedure is not known.
+
+### What this page _is not_ for[edit source]
+
+  * **Requests for actions involving administrator tools.** Please use Admin requests for such requests.
+  * **Larger discussion with other users on policies or other wide-ranging actions.** The Redwood Grove is a more suitable location to discuss larger changes to the Wiki's policies, procedures and high-use templates.
+  * **General chat (about Old School RuneScape or not).** General chat about Old School RuneScape (or an off-topic subject) should be taken to individual user talk pages, or article talk pages when applicable.
+
+  
+
+Click here to add a new request
+
+![Archives](https://oldschool.runescape.wiki/images/thumb/Replacement_filing_cabinet.svg/40px-
+Replacement_filing_cabinet.svg.png?fe279)  
+  
+---  
+Archives  
+1 **•** 2 **•** 3 **•** 4 **•** 5  
+Create next archive  
+  
+## Contents
+
+  * 1 Instructions
+    * 1.1 What this page _is_ for
+    * 1.2 What this page _is not_ for
+  * 2 Requests
+    * 2.1 Adding the page '100% completion'
+    * 2.2 Reset Quest Table Highlights and etc
+    * 2.3 Achievement diary skill reqs
+    * 2.4 Linking to MMG profit
+    * 2.5 BIS Links
+    * 2.6 Zulrah Drop Table
+    * 2.7 Shattered Relic League tab
+    * 2.8 Graphical updates template
+    * 2.9 Drop Rate for Crystal Teleport Seed Discrepancy
+    * 2.10 king ' ranson
+    * 2.11 Information on NPC attack range and aggression range
+    * 2.12 Hide sidebar
+    * 2.13 Equipment bonuses
+    * 2.14 Adjacent images help
+    * 2.15 Request for remote Jewelry Use
+    * 2.16 Inclusion of relevent music tracks across wiki pages
+    * 2.17 setting bank pin
+    * 2.18 In dark mode on mobile, have readable text
+    * 2.19 Runelite-Wiki sync on STASH page?
+    * 2.20 Gnome Restuarant Questions
+    * 2.21 Farming patches
+    * 2.22 RuneLite stats are not updating on quest pages?
+    * 2.23 Are the revenant monster droprates outdated?
+    * 2.24 missing mail
+    * 2.25 Quest guide
+    * 2.26 Ban apple
+    * 2.27 Jagex liveclicker issue
+    * 2.28 Modify Monster table on Ectoplasmator to show prayer exp gained
+
+# Requests[edit source]
+
+## Adding the page '100% completion'[edit source]
+
+I'm interested in adding a page describing the requirements to achieve a
+theoretical 100% completion in the game.
+
+I already did a short writeup of what I can think of over on my user page. I'm
+interested in feedback on how to make it a proper wiki article, general advice
+and things I've missed.
+
+Thanks for any help!  —The preceding unsigned comment was added by CX gamer
+(talk) on  16:11, 21 September 2021 (UTC).
+
+    Hi! To be completely honest, my gut instinct is that this is something that should remain a userpage unless something like the completionist cape from RS3 is added to OS. The reason why I'd say that is because it's a bit ill-defined what "100%" completion means in a game like this. Like is maxing out all boss counters (probably max unsigned 32 bit int each) or finishing the collection log part of it? Maxing in game isn't even really completion because 200M experience in all would be the "most complete" by that metric. I don't think there's an agreed upon way of deciding what takes too much time to be unrealistic. Keep in mind this is just my opinion, and I know there are plenty of people who would disagree with me!
+
+    However, I think this is separate from something like "One offs" or "Unrepeatable events", which is what most of your userpage looks like. I wouldn't be opposed to a page with a list of those personally. For the most part, these are pretty easy to define. Unlocking permanent transportation, spells, etc. all fall into this category as do things like unlocking the "Travel last" options on NPCs in some cases and objects like the POH jewellery box. There are some weird cases like pickpocketing Teddy from the student in the Digsite post-quest. This actually sets a varbit (persistent player state) that we can see if we inspect with Runelite, but there isn't a way to tell otherwise. I'd probably push for stuff like that to not be on such a page or maybe on the talk page instead. I actually have a Runelite plugin in the plugin hub that tracks some of these things on GitHub here (warning: it's a bit outdated) if you want to take a look for some other ideas. There's also a clan called Totus that focuses on defining completionist/collectionist criteria if you want to look into joining that (iirc it requires all achievement diaries done). I think this is a really interesting topic in general so I appreciate you bringing it up! By the way, you may want to join the wiki

@@ -1,0 +1,244 @@
+
+
+# RuneScape:Frequently asked questions
+
+From Old School RuneScape Wiki
+
+Jump to navigation Jump to search
+
+Shortcut:
+
+  * RS:FAQ
+
+Below is a list of **frequently asked questions (FAQs)** about the Old School
+RuneScape Wiki or wikis in general. Not all questions can be included here, so
+feel free to ask any questions on this article's talk page by clicking here.
+
+## Contents
+
+  * 1 General FAQs
+    * 1.1 What is a wiki?
+    * 1.2 A wiki? For Old School RuneScape?
+    * 1.3 Can't I just go on Wikipedia?
+    * 1.4 Can I make articles about players?
+    * 1.5 I found an article about a player. What now?
+    * 1.6 What's with the different coloured links?
+    * 1.7 What do the numbers mean in the recent changes?
+    * 1.8 Why do users have different colours?
+    * 1.9 How do I make an animation?
+    * 1.10 Can I upload pictures of my character onto the Wiki?
+    * 1.11 Who owns this site? Who is the site leader?
+    * 1.12 Is there a way to download a version of a page for offline use?
+    * 1.13 Does this wiki have a dark mode setting?
+
+## General FAQs
+
+### What is a wiki?
+
+Shortcut:
+
+  * RS:FAQ#WIKI
+
+A wiki is a website that anyone can edit. To let yourself and others enjoy
+this site to the fullest, please research the facts before posting anything on
+one. Most wikis are open to the general public without the need to register
+any user account, as is the case for this wiki. For more information on wikis,
+check out Wikipedia's wiki article.
+
+### A wiki? For Old School RuneScape?
+
+Shortcut:
+
+  * RS:FAQ#RSW
+
+Yes. Everything on this site (or wiki) is entirely _Old School RuneScape_
+-related. We've got skill guides, quest walkthroughs, general guides, and much
+more. And the best thing about this wiki is that _anyone can edit_ , including
+_you_! You do not have to be registered to edit, but you are encouraged to.
+
+### Can't I just go on Wikipedia?
+
+Shortcut:
+
+  * RS:FAQ#WP
+
+While Wikipedia has an article on _Old School RuneScape_, it is very limited
+as to what they can add. Here, basically anything goes. Wikipedia's _Old
+School RuneScape_ article is also designed so any reader can learn about the
+game, whereas this wiki is more for players (Old School RuneScape players,
+concretely). The level of detail permissible and encouraged here would be
+rapidly deleted fancruft, which is not allowed on Wikipedia.
+
+### Can I make articles about players?
+
+Shortcut:
+
+  * RS:FAQ#PLAYERS
+
+**Articles about players are not allowed.** Sorry, but these articles are
+often targets for vandalism (e.g. "This player sucks!"). Also, players might
+not know there is an article about them on a site that anyone can edit,
+causing them to be concerned about what people are writing about them. It is
+also very difficult to verify any information except for the raw skill
+statistics about any given player, so it is best to not make articles about
+players. See our player article policy for more information.
+
+### I found an article about a player. What now?
+
+Shortcut:
+
+  * RS:FAQ#FOUNDP
+
+Either contact an administrator and ask them to delete the page, or redirect
+the page to an article that it would be best suited to be redirected to, or,
+most easily, add `{{d|No player articles.}}` at the top of the page, so it can
+be easily seen as a target for deletion without having to tell anybody.
+
+### What's with the different coloured links?
+
+Shortcut:
+
+  * RS:FAQ#COLOUR
+
+There are two different coloured links.
+
+  * Blue links (or brown links in the current wiki skin) are **internal links**. They link to other pages on the wiki.
+  * Red links are pages that **have not been created**.
+
+### What do the numbers mean in the recent changes?
+
+Shortcut:
+
+  * RS:FAQ#RC
+
+Some numbers can be seen in the recent changes after the time an edit was
+made. This number indicates how many characters were added or removed from the
+article. If the number is red, then characters were removed. If the number is
+green, then characters were added. If the number is in **bold** , it means
+that a lot of characters were either removed or added, indicating a major
+revision to the article. The coloured numbers, and the bold formatting, help
+indicate if users are vandalising articles or helping to contribute to them.
+
+For example:
+
+    ` 01:23 `| RuneScape:Frequently asked questions (diff; hist) . . **(+1,000)** . . User (Talk | contribs)  
+---|---  
+  
+would indicate 1,000 characters were added to this article by a user named
+User, whereas:
+
+    ` 01:23 `| RuneScape:Frequently asked questions (diff; hist) . . **(-1,000)** . . User (Talk | contribs)  
+---|---  
+  
+would indicate 1,000 characters were removed from this article by a user named
+User.
+
+### Why do users have different colours?
+
+Shortcut:
+
+  * RS:FAQ#USERC
+
+In the recent changes and page histories, there are certain users with their
+usernames highlighted. The colours show the technical tools and abilities
+these users have. For a list of different access types, see
+RuneScape:Administrators.
+
+  * Bot accounts use the AutoWikiBrowser or other such software to perform semi-automated edits and to perform various maintenance tasks.
+  * Administrators, or Sysops, are editors who have access to technical features that help with maintenance. This may include deleting pages, files, and issuing blocks/bans to people.
+  * Bureaucrats have all the powers of an administrator, with the added ability to change an account's user groups, such as making them an administrator.
+  * Red links indicate any user who has not created a user page.
+  * Autoconfirmed accounts are normal accounts that, unlike unregistered users, can edit semi-protected pages, move pages, upload files and maintain preferences.
+
+### How do I make an animation?
+
+Shortcut:
+
+  * RS:FAQ#ANI
+
+Different than just taking a still-shot, a specific type of software is used
+to make an animation. Camtasia Film Studios is such a program.
+
+### Can I upload pictures of my character onto the Wiki?
+
+Shortcut:
+
+  * RS:FAQ#MYPIC
+
+No. Any pictures of a user's Old School RuneScape character may not be
+uploaded onto the wiki _unless_ it will be used in an article. If an image is
+uploaded just to be used on a userpage, it will be deleted. If you'd like to
+have pictures of your character on your userpage, feel free to use imgur.
+
+### Who owns this site? Who is the site leader?
+
+Shortcut:
+
+  * RS:FAQ#LEADER
+
+Officially, Weird Gloop Ltd owns the servers that run this site. Jagex pays
+for the hosting of aforementioned servers, however they do not have permission
+to assume direct control of the website.
+
+For a full list of individuals who have helped to write any given page, click
+on the "history" button at the top of each page.
+
+But as for this site having a leader (elected or not), we have none (per the
+policy All editors have equal status). There are users who have different
+access powers (as mentioned above), but The Old School RuneScape Wiki is not
+run by a leader, webmaster, president, or anything of the sort.
+
+### Is there a way to download a version of a page for offline use?
+
+Shortcut:
+
+  * RS:FAQ#OFFLINE
+
+All wiki pages are made available for download. To download individual and
+multiple pages, use Special:Export.
+
+### Does this wiki have a dark mode setting?
+
+Shortcut:
+
+  * RS:FAQ#DARKMODE
+
+To set the wiki in dark mode, scroll to the top of any page, and click the
+moon icon, located in the top right, next to the clock. For mobile however,
+scroll to the the top of any page and then open the hamburger menu to the
+left.
+
+
+‘https://oldschool.runescape.wiki/w/RuneScape:Frequently_asked_questions?oldid=14288825’
+
+Category:
+
+  * Old School RuneScape Wiki community
+
+## Navigation menu
+
+Personal tools
+
+  * Not logged in
+  * Talk
+  * Contributions
+  * Create account
+  * Log in
+
+Namespaces
+
+  * Project page
+  * Discussion
+
+British English expanded collapsed
+
+Views
+
+  * Read
+  * View source
+  * History
+
+More expanded collapsed
+
+###  Search
+
