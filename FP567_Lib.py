@@ -5,7 +5,7 @@ import matplotlib.pyplot
 
 PROJECT_ROOT_DIR = os.path.dirname(os.path.realpath(__file__))
 PATH_TO_RESOURCES = os.path.join(PROJECT_ROOT_DIR, "resources")
-PATH_TO_PROCESSED_UPDATES = os.path.join(PATH_TO_RESOURCES, "Updates")
+PATH_TO_PROCESSED_UPDATES = os.path.join(PATH_TO_RESOURCES, "Processed_Updates")
 PATH_TO_PROCESSED_UPDATES_BY_YEAR = os.path.join(PATH_TO_PROCESSED_UPDATES, "by_year")
 PATH_TO_PLOTS = os.path.join(PROJECT_ROOT_DIR, "plots")
 
