@@ -1,0 +1,1 @@
+Players no longer need a chart, watch and sextant in their inventory to complete a coordinate clue.

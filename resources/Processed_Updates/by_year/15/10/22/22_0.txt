@@ -1,0 +1,1 @@
+Some multi-stage achievement diary tasks have been restructured to resolve issues where their progress got confused.

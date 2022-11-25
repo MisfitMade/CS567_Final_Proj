@@ -1,0 +1,1 @@
+Fixed misspelling of "receive" in Ardougne, Karamja, Morytania and Wilderness Diaries.  

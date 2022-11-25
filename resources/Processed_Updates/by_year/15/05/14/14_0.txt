@@ -1,0 +1,1 @@
+Prevented some diary task messages from appearing if you haven't started the related diary.  

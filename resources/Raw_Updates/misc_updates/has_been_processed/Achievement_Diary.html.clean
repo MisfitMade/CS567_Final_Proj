@@ -3742,58 +3742,34 @@ An extremely early concept of the easy set shown at Runefest 2014.
 
 ## Changes[edit | edit source]
 
-Date  | Changes  
----|---  
+Date | Changes  
 28 July 2016  
-(update)  |
-
 The Achievement Diaries list is now ordered alphabetically.  
   
 22 October 2015  
-(update)  |
+Some multi-stage achievement diary tasks have been restructured to resolve issues where their progress got confused.
+Corrected punctuation and grammar in some achievement diary tasks.
 
-  * Some multi-stage achievement diary tasks have been restructured to resolve issues where their progress got confused.
-  * Corrected punctuation and grammar in some achievement diary tasks.
-
-  
 16 July 2015  
-(update)  |
-
-Fixed misspelling of "receive" in Ardougne, Karamja, Morytania and Wilderness
-Diaries.  
+Fixed misspelling of "receive" in Ardougne, Karamja, Morytania and Wilderness Diaries.  
   
 18 June 2015  
-(update)  |
-
-Degraded barrows equipment, mage arena capes and achievement diary reward
-items are now also protected on death, outside of PvP, in line with other
-untradeable items.  
+Degraded barrows equipment, mage arena capes and achievement diary reward items are now also protected on death, outside of PvP, in line with other untradeable items.  
   
 14 May 2015  
-(update)  |
-
-Prevented some diary task messages from appearing if you haven't started the
-related diary.  
+Prevented some diary task messages from appearing if you haven't started the related diary.  
   
 7 May 2015  
-(update)  |
-
-The achievement diary teleports now have some fancy new graphical updates. The
-teleports to the Ardougne monastery, Ardougne farming patch, Falador cabbage
-patch, slime pit and Nardah all received a makeover.  
+The achievement diary teleports now have some fancy new graphical updates. The teleports to the Ardougne monastery, Ardougne farming patch, Falador cabbage patch, slime pit and Nardah all received a makeover.  
   
 30 April 2015  
-(update)  |
-
 Added some area checks for a couple of diary tasks.  
   
 19 March 2015  
-(update)  |
+Fixed a number of zone checks and typos relating to achievement diaries.
+Task increment messages should no longer appear on F2P Worlds.
 
-  * Fixed a number of zone checks and typos relating to achievement diaries.
-  * Task increment messages should no longer appear on F2P Worlds.
-
-  
+##  
   
 v • d • e
 

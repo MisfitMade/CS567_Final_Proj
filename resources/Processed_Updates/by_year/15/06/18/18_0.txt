@@ -1,0 +1,1 @@
+Degraded barrows equipment, mage arena capes and achievement diary reward items are now also protected on death, outside of PvP, in line with other untradeable items.  
