@@ -1,8 +1,25 @@
 import os
+import calendar
+import shutil
 import matplotlib.pyplot
 
-PROJECT_ROOT_DIR = "."
-PATH_TO_PLOTS = f"{PROJECT_ROOT_DIR}/plots"
+PROJECT_ROOT_DIR = os.path.dirname(os.path.realpath(__file__))
+PATH_TO_RESOURCES = os.path.join(PROJECT_ROOT_DIR, "resources")
+PATH_TO_PROCESSED_UPDATES = os.path.join(PATH_TO_RESOURCES, "Updates")
+PATH_TO_PROCESSED_UPDATES_BY_YEAR = os.path.join(PATH_TO_PROCESSED_UPDATES, "by_year")
+PATH_TO_PLOTS = os.path.join(PROJECT_ROOT_DIR, "plots")
+
+
+RUNESCAPE_YEARS = list(map(str, range(1998, 2023)))
+MONTHS = list(map(str.lower, calendar.month_name[1:]))
+WORD_MONTH_TO_NUMBER_MAP = {
+    "january": "01", "february": "02", "march": "03", "april": "04", "may": "05", "june": "06",
+    "july": "07", "august": "08", "september": "09", "october": "10", "november": "11", "december": "12"
+} 
+DAYS_OF_MONTH = list(map(str, range(1, 32)))
+DAYS_OF_WEEK_ABRV = calendar.day_abbr[:]
+
+
 
 def save_fig(plt: matplotlib.pyplot, fig_id: str, tight_layout=True, fig_extension="png", resolution=300) -> None:
     '''
@@ -16,3 +33,39 @@ def save_fig(plt: matplotlib.pyplot, fig_id: str, tight_layout=True, fig_extensi
     if tight_layout:
         plt.tight_layout()
     plt.savefig(path, format=fig_extension, dpi=resolution)
+
+
+def move_file_to_if_fnx(
+    path_to_folder_to_enumerate: str,
+    path_to_other_folder: str,
+    keep_fnx):
+    '''
+    Checks all the files in a the given folder and keeps them if they pass
+    the given function check. Else, they are moved to the other given folder.
+    '''
+
+    for file in os.listdir(path_to_folder_to_enumerate):
+        path_to_file = os.path.join(path_to_folder_to_enumerate, file)
+        if not keep_fnx(path_to_file):
+            shutil.move(path_to_file, path_to_other_folder)
+
+
+def check_if_init_is_game_updates(file_name: str):
+    '''
+    There are files in a folder that are useless that do not have their
+    first non-blank line as "# Game Updates"
+    '''
+    with open(file_name, "r") as f:
+        blank_lines = True
+        while blank_lines:
+            line = f.readline()
+            toks = line.split()
+            num_toks = len(toks)
+            if num_toks > 0:
+                blank_lines=False
+    
+    return num_toks == 3 and toks[0]=="#" and toks[1]=="Game" and toks[2]=="updates"
+
+
+def word_month_to_number_month(month: str) -> str:
+    return WORD_MONTH_TO_NUMBER_MAP[month.lower()]

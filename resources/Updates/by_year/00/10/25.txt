@@ -1,0 +1,1 @@
+Injured monsters will now run away.

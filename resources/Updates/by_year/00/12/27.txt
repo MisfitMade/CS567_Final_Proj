@@ -1,0 +1,1 @@
+Fixed Floating object bug.

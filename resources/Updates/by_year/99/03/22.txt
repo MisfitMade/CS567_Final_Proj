@@ -1,0 +1,1 @@
+Identikit system was finished. Player's appearance and human NPCs could then be customised.

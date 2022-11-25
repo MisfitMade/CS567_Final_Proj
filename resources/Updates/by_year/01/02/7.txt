@@ -1,0 +1,1 @@
+RuneScape now works on NetScape 6

@@ -1,0 +1,1 @@
+Server status page, my-friends, and password recovery pages
