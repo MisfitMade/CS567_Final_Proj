@@ -1,0 +1,1 @@
+Shooting Stars should now deplete more slowly when large groups are mining them.

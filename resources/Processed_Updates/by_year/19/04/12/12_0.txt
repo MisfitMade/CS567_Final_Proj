@@ -1,0 +1,1 @@
+All poll results are now hidden before the poll ends as part of a game integrity update.  

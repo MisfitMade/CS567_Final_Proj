@@ -96,7 +96,7 @@ def get_updates_from_certain_misc_updates_pattern(files_with_pattern) -> None:
                 if len(toks) == 3 and toks[0] == "Date" and toks[2] == "Changes":
                     i = i + 1
                     toks = lines[i].split()
-                    while (toks[0] != "##"):
+                    while (toks[0] != "##" and toks[0] != '•'):
                         # get the date line as a folder path
                         d = toks[0]
                         path_to_day_folder = os.path.join(

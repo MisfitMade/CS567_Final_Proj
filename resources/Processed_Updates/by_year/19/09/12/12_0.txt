@@ -1,0 +1,1 @@
+The vertical size of the voting buttons on mobile have been increased by 60%.  

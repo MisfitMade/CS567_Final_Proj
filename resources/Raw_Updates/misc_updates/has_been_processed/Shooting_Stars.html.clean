@@ -852,31 +852,20 @@ School RuneScape_.
 
 ## Changes[edit | edit source]
 
-Date  | Changes  
----|---  
+Date | Changes  
 10 November 2021  
-(update)  |
-
 Shooting Stars now have a chance to land in Darkmeyer, as previously intended.  
   
 30 June 2021  
-(update | poll)  |
-
 Experience from mining crashed stars have been increased per stardust mined.  
   
 24 March 2021  
-(update)  |
+Shooting Stars should now deplete more slowly when large groups are mining them.
+Cannons can once again be placed where a Shooting Star would land. However, if a Star lands on it, it will be destroyed and will need to be reclaimed from Nulodion.
+There is now a chance players might receive additional stardust when mining Shooting Stars.
 
-  * Shooting Stars should now deplete more slowly when large groups are mining them.
-  * Cannons can once again be placed where a Shooting Star would land. However, if a Star lands on it, it will be destroyed and will need to be reclaimed from Nulodion.
-  * There is now a chance players might receive additional stardust when mining Shooting Stars.
-
-  
 17 March 2021  
-| Hotfix
-
-Players with the Twisted, Hosidius, and Cosy Cabin house styles can now
-properly use the telescope.  
+Players with the Twisted, Hosidius, and Cosy Cabin house styles can now properly use the telescope.  
   
 ## Developers[edit | edit source]
 

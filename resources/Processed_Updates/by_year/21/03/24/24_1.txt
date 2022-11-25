@@ -1,0 +1,1 @@
+Cannons can once again be placed where a Shooting Star would land. However, if a Star lands on it, it will be destroyed and will need to be reclaimed from Nulodion.
