@@ -1,0 +1,1 @@
+Various Combat Achievement tasks will no longer interrupt your actions, most noticeably in Chambers of Xeric.

@@ -1,0 +1,1 @@
+The event rpg now counts as a melee weapon for tasks that specify usage of one.

@@ -1,0 +1,1 @@
+The task Squashing the Giant now requires players to have the appropriate prayer activated when Obor attacks, instead of killing him without taking any damage.

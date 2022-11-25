@@ -241,59 +241,40 @@ Grandmaster  | +40  | 50,000  | 37,500
   
 ## Changes[edit | edit source]
 
-Date  | Changes  
----|---  
+Date | Changes
 13 April 2022  
-(update | poll)  |
-
-76 kill count tasks have had their kill count requirements significantly
-reduced, while 12 of those have had name changes to better fit the adjusted
-amount.  
+76 kill count tasks have had their kill count requirements significantly reduced, while 12 of those have had name changes to better fit the adjusted amount.  
   
 23 February 2022  
-(update)  |
-
 Eleven tasks involving Nex have been added.  
   
 9 September 2021  
-(update)  |
+Various Combat Achievement tasks will no longer interrupt your actions, most noticeably in Chambers of Xeric.
+The information boxes for Combat Achievement rewards have been tidied up.
 
-  * Various Combat Achievement tasks will no longer interrupt your actions, most noticeably in Chambers of Xeric.
-  * The information boxes for Combat Achievement rewards have been tidied up.
-
-  
 12 August 2021  
-(update)  |
-
 Ten tasks involving Phosani's Nightmare have been added.  
   
 4 August 2021  
-(update)  |
+Various kill count tasks have been reduced/increased.
+The event rpg now counts as a melee weapon for tasks that specify usage of one.
+Tasks involving the Fight Caves will now properly save progress upon logging out.
+Tasks involving The Nightmare should now work as intended.
+The master task Sleep Tight has been made an elite task.
+The elite task Nightmare (Solo) Speed-Trialist has been made a master task.
+The task Perfect Verzik will no longer fail if damage was taken from her green ball attack, providing that it was bounced to another player.
 
-  * Various kill count tasks have been reduced/increased.
-  * The event rpg now counts as a melee weapon for tasks that specify usage of one.
-  * Tasks involving the Fight Caves will now properly save progress upon logging out.
-  * Tasks involving The Nightmare should now work as intended.
-  * The master task Sleep Tight has been made an elite task.
-  * The elite task Nightmare (Solo) Speed-Trialist has been made a master task.
-  * The task Perfect Verzik will no longer fail if damage was taken from her green ball attack, providing that it was bounced to another player.
-
-  
 28 July 2021  
-(update)  |
+The task Squashing the Giant now requires players to have the appropriate prayer activated when Obor attacks, instead of killing him without taking any damage.
+The task Prepared for Battle has been renamed to Shayzien Protector, and now requires players to kill a lizardman shaman in the Lizardman Temple without taking damage from it, rather than killing one whilst wearing tier 5 Shayzien armour.
+Tasks which previously specified that Arclight must be used can now be completed with any demonbane weapon.
+Kill counts for Phosani's Nightmare will now count towards The Nightmare kill count tasks.
+Completion counts for the Corrupted Gauntlet will now count towards The Gauntlet kill count tasks.
+Fighting as Intended and Fighting as Intended II can now be completed on Deadman Mode worlds.
+Perfection tasks within the Theatre of Blood will no longer fail upon the boss starting their death animations.
+Typos have been fixed in the tasks Dagannoth Supreme Adept and Playing with Lasers.
+General Graardor is no longer referred to as "General Graador" in task descriptions within the Combat Achievements interface.
 
-  * The task Squashing the Giant now requires players to have the appropriate prayer activated when Obor attacks, instead of killing him without taking any damage.
-  * The task Prepared for Battle has been renamed to Shayzien Protector, and now requires players to kill a lizardman shaman in the Lizardman Temple without taking damage from it, rather than killing one whilst wearing tier 5 Shayzien armour.
-  * Tasks which previously specified that Arclight must be used can now be completed with any demonbane weapon.
-  * Kill counts for Phosani's Nightmare will now count towards The Nightmare kill count tasks.
-  * Completion counts for the Corrupted Gauntlet will now count towards The Gauntlet kill count tasks.
-  * Fighting as Intended and Fighting as Intended II can now be completed on Deadman Mode worlds.
-  * Perfection tasks within the Theatre of Blood will no longer fail upon the boss starting their death animations.
-  * Typos have been fixed in the tasks Dagannoth Supreme Adept and Playing with Lasers.
-  * General Graardor is no longer referred to as "General Graador" in task descriptions within the Combat Achievements interface.
-
-  
-  
 ## Trivia[edit | edit source]
 
   * Prior to the release of Combat Achievements, God Wars Dungeon access was only possible with partial completion of Troll Stronghold. Ghommal's Hilt now allows limited builds, such as an obby mauler with 1 Attack, to enter the God Wars Dungeon without having to accept the 3000 Attack experience reward from Death Plateau.[1]

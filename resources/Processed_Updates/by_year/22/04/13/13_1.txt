@@ -1,0 +1,1 @@
+76 kill count tasks have had their kill count requirements significantly reduced, while 12 of those have had name changes to better fit the adjusted amount.  

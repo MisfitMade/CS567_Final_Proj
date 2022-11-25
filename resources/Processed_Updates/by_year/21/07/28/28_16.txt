@@ -1,0 +1,1 @@
+Tasks which previously specified that Arclight must be used can now be completed with any demonbane weapon.

@@ -1,0 +1,1 @@
+Perfection tasks within the Theatre of Blood will no longer fail upon the boss starting their death animations.

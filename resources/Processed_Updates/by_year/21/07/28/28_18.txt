@@ -1,0 +1,1 @@
+Completion counts for the Corrupted Gauntlet will now count towards The Gauntlet kill count tasks.

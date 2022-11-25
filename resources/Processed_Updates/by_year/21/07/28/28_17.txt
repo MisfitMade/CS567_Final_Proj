@@ -1,0 +1,1 @@
+Kill counts for Phosani's Nightmare will now count towards The Nightmare kill count tasks.

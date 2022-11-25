@@ -1,0 +1,1 @@
+Tasks involving The Nightmare should now work as intended.
