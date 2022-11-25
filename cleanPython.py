@@ -5,13 +5,15 @@ import glob
 import statistics
 from scipy.stats import entropy
 
+from FP567_Lib import *
+
 # returns JSON object as
 # a dictionary
 dictprice = {}
 # dictamount = {}
 
 
-for y in glob.glob("C:\\Users\\nicho\PycharmProjects\\CS567_Final_Proj_backup\\resources\\*\\*.json"):
+for y in glob.glob(f"{PATH_TO_MARKET_ITEM_DATA}\\*.json"):
     f = open(y)
     data = json.load(f)
     for i in data:

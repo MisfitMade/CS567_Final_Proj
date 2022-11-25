@@ -1,8 +1,11 @@
 import json
 import html2text
 import glob
+
+from FP567_Lib import *
+
 # Opening JSON file
-f = open('C:\\Users\\nicho\\PycharmProjects\\CS567_Final_Proj_backup\\resources\\osrs_has_res\\all0a3b.json')
+f = open(f'{PATH_TO_MARKET_ITEM_DATA}\\all0a3b.json')
 import statistics
 from scipy.stats import entropy
 
@@ -12,7 +15,7 @@ dictprice = {}
 dictamount = {}
 
 data = json.load(f)
-for y in glob.glob("C:\\Users\\nicho\PycharmProjects\\CS567_Final_Proj_backup\\resources\\*\\*.json"):
+for y in glob.glob(f"{PATH_TO_MARKET_ITEM_DATA}\\*.json"):
     f = open(y)
     data = json.load(f)
     for i in data:
