@@ -30,6 +30,7 @@ WORD_MONTH_TO_NUMBER_MAP = {
 } 
 DAYS_OF_MONTH = list(map(str, range(1, 32)))
 DAYS_OF_WEEK_ABRV = calendar.day_abbr[:]
+NUMBER_OF_SECONDS_IN_A_UNIX_DAY = 86400
 
 
 
