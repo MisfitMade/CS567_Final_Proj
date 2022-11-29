@@ -174,3 +174,29 @@ def get_updates_from_other_certain_misc_updates_pattern(files_with_pattern) -> N
 
 def word_month_to_number_month(month: str) -> str:
     return WORD_MONTH_TO_NUMBER_MAP[month.lower()]
+
+def save_table_as_updates(name_v_release_date) -> None:
+    '''
+    Takes a row from a quest table and saves it as info released on a certain day.
+    Will append to the day's file if it exists already, otherwise, it makes a new one
+    '''
+    to_write = name_v_release_date["Title"].strip()
+    date_toks = name_v_release_date["Date"].strip().split()
+    path = os.path.join(
+        PATH_TO_PROCESSED_UPDATES_BY_YEAR,
+        date_toks[2][2:4],
+        word_month_to_number_month(date_toks[1]),
+        date_toks[0])
+    if os.path.exists(path) and os.path.isdir(path):
+        files = os.listdir(path)
+        with open(os.path.join(path, files[0]), 'a') as f:
+            f.write(f" and {to_write}")
+    else:
+        as_txt = f"{path}.txt"
+        if os.path.exists(as_txt) and os.path.isfile(as_txt):
+            with open(as_txt, 'a') as f:
+                f.write(f" and {to_write}")
+        else:
+            with open(as_txt, 'w') as f:
+                f.write(to_write)
+    
