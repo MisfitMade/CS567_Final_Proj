@@ -1,6 +1,7 @@
 import os
 import calendar
 import shutil
+import datetime
 import matplotlib.pyplot
 
 PROJECT_ROOT_DIR = os.path.dirname(os.path.realpath(__file__))
@@ -170,6 +171,13 @@ def get_updates_from_other_certain_misc_updates_pattern(files_with_pattern) -> N
 
             shutil.move(path_strt, os.path.join(PATH_TO_RAW_MISC_UPDATES_BEEN_PROCD, file_name))
 
+
+def convert_json_ms_unix_time_to_yyyy_m_d(unix_time: str):
+    '''
+    Converts a given unix time string into a year, month, day date object.
+    Our unix times are in millisecond format.
+    '''
+    datetime.datetime.utcfromtimestamp(float(unix_time)/1000)
 
 
 def word_month_to_number_month(month: str) -> str:
