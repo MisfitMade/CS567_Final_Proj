@@ -10,6 +10,8 @@ import calendar
 import shutil
 import datetime
 import matplotlib.pyplot
+import json
+import glob
 
 PROJECT_ROOT_DIR = os.path.dirname(os.path.realpath(__file__))
 PATH_TO_RESOURCES = os.path.join(PROJECT_ROOT_DIR, "resources")
@@ -39,7 +41,20 @@ DAYS_OF_MONTH = list(map(str, range(1, 32)))
 DAYS_OF_WEEK_ABRV = calendar.day_abbr[:]
 NUMBER_OF_SECONDS_IN_A_UNIX_DAY = 86400
 
+class MarketItem:
+    def __init__(self, path_to_item_json):
+        item_data = json.load(open(path_to_item_json))
+        item_keys = item_data.keys()
+        item_vals = item_data.values()
 
+        if len(item_keys) > 1 or len(item_vals) > 1:
+            raise Exception(f"The json at {path_to_item_json} is malformed.")
+
+        self.item_id = list(item_keys)[0]
+        self.info_by_unit_time_list = list(item_vals)[0]
+        self.number_of_unit_times = len(self.info_by_unit_time_list)
+
+MARKET_ITEMS_LIST = [MarketItem(path_to_market_item) for path_to_market_item in glob.glob(os.path.join(PATH_TO_MARKET_ITEM_DATA, "*.json"))]
 
 def save_fig(plt: matplotlib.pyplot, fig_id: str, tight_layout=True, fig_extension="png", resolution=300) -> None:
     '''
