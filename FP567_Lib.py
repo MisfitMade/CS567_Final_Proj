@@ -1,3 +1,10 @@
+'''
+Can use below command in a linux terminal to delete files in certain folders with certain extensions.
+If you run the below command in resources/Processed_Updates/by_year it will delete all files that
+end with .npy in the folders that have the day_num.txt files.
+find . -type f -iname *\*\*.npy -delete
+'''
+
 import os
 import calendar
 import shutil

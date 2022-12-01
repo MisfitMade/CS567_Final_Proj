@@ -1,1 +1,0 @@
-Players who do not interact with the client would stop retaliating in combat after 15 minutes, making splashing a much less effective idle training method.
