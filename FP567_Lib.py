@@ -77,7 +77,9 @@ class Market:
         market_is = [MarketItem(path_to_market_item) for path_to_market_item in glob.glob(os.path.join(PATH_TO_MARKET_ITEM_DATA, "*.json"))]
         # market_items is a dict of item_id -> item's list of [time, price, amount_sold] instances.
         self.market_items = {}
+        self.item_ids = []
         for market_item in market_is:
+            self.item_ids.append(market_item.item_id)
             self.market_items[market_item.item_id] = market_item
         
         # number_of_infos_in_oldest_item is the number of [time, price, amount_sold] instances in the
@@ -85,10 +87,8 @@ class Market:
         self.number_of_infos_in_oldest_item = np.array(list(map(lambda market_item: market_item.number_of_unit_times, market_is))).max()
 
         # markets_time_span is a list of the unix times from the item that has the most [time, price, amount_sold] instances.
-        self.markets_time_span = list(map(
-            lambda unit_time_info: unit_time_info[0],
-            self.get_items_that(
-                lambda item: len(item.info_by_unit_time_list) == self.number_of_infos_in_oldest_item)[0].info_by_unit_time_list))
+        self.markets_time_span = list(self.get_items_that(
+                lambda item: len(item.time_to_info_dict) == self.number_of_infos_in_oldest_item)[0].time_to_info_dict.keys())
 
     def get_items_that(self, predicate):
         '''
@@ -102,7 +102,13 @@ class Market:
         else:
             return None
 
-    def balance(self, list_of_unix_times_to_balance_around, default_amount_sold, default_price):
+    def balance_as_is(self, default_price, default_amount_sold):
+        '''
+        Balances the market based on it's current market_time_span
+        '''
+        self.balance(self.markets_time_span, default_price, default_amount_sold)
+
+    def balance(self, list_of_unix_times_to_balance_around, default_price, default_amount_sold):
         '''
         Given a list of unix times, makes every item in the market have info for the list of unix times
         and the list of unix times only. If the item does not have info for a unix time in the list,
@@ -116,7 +122,7 @@ class Market:
 
             self.market_items[item_id].set_unix_time_to_info_dict(balanced_info_dict)
 
-        self.markets_time_span = list_of_unix_times_to_balance_around
+        self.markets_time_span = sorted(list_of_unix_times_to_balance_around)
 
     def is_balanced(self) -> bool:
         '''
@@ -132,7 +138,6 @@ class Market:
                 item_0_times = item_i_times
         
         return True
-
 
 
 def save_fig(plt: matplotlib.pyplot, fig_id: str, tight_layout=True, fig_extension="png", resolution=300) -> None:
