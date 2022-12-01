@@ -54,7 +54,11 @@ class MarketItem:
         self.info_by_unit_time_list = list(item_vals)[0]
         self.number_of_unit_times = len(self.info_by_unit_time_list)
 
-MARKET_ITEMS_LIST = [MarketItem(path_to_market_item) for path_to_market_item in glob.glob(os.path.join(PATH_TO_MARKET_ITEM_DATA, "*.json"))]
+class Market:
+    def __init__(self):
+        self.market_items = [MarketItem(path_to_market_item) for path_to_market_item in glob.glob(os.path.join(PATH_TO_MARKET_ITEM_DATA, "*.json"))]
+
+MARKET = Market()
 
 def save_fig(plt: matplotlib.pyplot, fig_id: str, tight_layout=True, fig_extension="png", resolution=300) -> None:
     '''
