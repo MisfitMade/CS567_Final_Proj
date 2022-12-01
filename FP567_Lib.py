@@ -56,8 +56,21 @@ class MarketItem:
             raise Exception(f"The json at {path_to_item_json} is malformed.")
 
         self.item_id = list(item_keys)[0]
-        self.info_by_unit_time_list = list(item_vals)[0]
-        self.number_of_unit_times = len(self.info_by_unit_time_list)
+        # this is a unix time -> [price, amount sold] dict
+        self.time_to_info_dict = {}
+        for unit_time_lis in list(item_vals)[0]:
+            self.time_to_info_dict[unit_time_lis[0]] = unit_time_lis[1:]
+        self.number_of_unit_times = len(self.time_to_info_dict)
+    
+
+    def get_info_at_unix_time(self, unix_time):
+        if unix_time in self.time_to_info_dict:
+            return self.time_to_info_dict[unix_time]
+        else:
+            return None
+
+    def set_unix_time_to_info_dict(self, new_dict):
+        self.time_to_info_dict = new_dict
 
 class Market:
     def __init__(self):
@@ -89,8 +102,38 @@ class Market:
         else:
             return None
 
+    def balance(self, list_of_unix_times_to_balance_around, default_amount_sold, default_price):
+        '''
+        Given a list of unix times, makes every item in the market have info for the list of unix times
+        and the list of unix times only. If the item does not have info for a unix time in the list,
+        then [default_price, default_amount_sold] is used.
+        '''
+        for item_id, item in self.market_items.items():
+            balanced_info_dict = {}
+            for unix_time in list_of_unix_times_to_balance_around:
+                info_at_unix_time = item.get_info_at_unix_time(unix_time)
+                balanced_info_dict[unix_time] = [default_price, default_amount_sold] if info_at_unix_time is None else info_at_unix_time
 
-MARKET = Market()
+            self.market_items[item_id].set_unix_time_to_info_dict(balanced_info_dict)
+
+        self.markets_time_span = list_of_unix_times_to_balance_around
+
+    def is_balanced(self) -> bool:
+        '''
+        Checks if the entire market's items have entirely the same span of unix times.
+        '''
+        market_items = list(self.market_items.values())
+        item_0_times = sorted(list(market_items[0].time_to_info_dict.keys()))
+        for item_i in market_items:
+            item_i_times = sorted(list(item_i.time_to_info_dict.keys()))
+            if len(item_0_times) != len(item_i_times) or item_0_times != item_i_times:
+                return False
+            else:
+                item_0_times = item_i_times
+        
+        return True
+
+
 
 def save_fig(plt: matplotlib.pyplot, fig_id: str, tight_layout=True, fig_extension="png", resolution=300) -> None:
     '''
