@@ -12,6 +12,7 @@ import datetime
 import matplotlib.pyplot
 import json
 import glob
+import sys
 
 import pandas as pd
 import numpy as np
@@ -33,6 +34,7 @@ PATH_TO_PROCESSED_UPDATES = os.path.join(PATH_TO_RESOURCES, "Processed_Updates")
 PATH_TO_PROCESSED_UPDATES_BY_YEAR = os.path.join(PATH_TO_PROCESSED_UPDATES, "by_year")
 PATH_TO_PLOTS = os.path.join(PROJECT_ROOT_DIR, "plots")
 
+PATH_TO_ASSEMBLED_FORCASTING_MATRIX = os.path.join(PATH_TO_RESOURCES, "forcasting_matrix.csv")
 
 RUNESCAPE_YEARS = list(map(str, range(1998, 2023)))
 MONTHS = list(map(str.lower, calendar.month_name[1:]))
@@ -43,9 +45,10 @@ WORD_MONTH_TO_NUMBER_MAP = {
 DAYS_OF_MONTH = list(map(str, range(1, 32)))
 DAYS_OF_WEEK_ABRV = calendar.day_abbr[:]
 NUMBER_OF_SECONDS_IN_A_UNIX_DAY = 86400
+EMBEDDED_UPDATE_VEC_LEN = 28
 
 class MarketItem:
-    def __init__(self, path_to_item_json):
+    def __init__(self, path_to_item_json, max_expected_item_feats=2):
         '''
         Given a path to a json market item, reads it in and makes a MarketItem out of it.
         '''
@@ -56,14 +59,29 @@ class MarketItem:
         if len(item_keys) > 1 or len(item_vals) > 1:
             raise Exception(f"The json at {path_to_item_json} is malformed.")
 
+        self.max_expected_item_feats = max_expected_item_feats
+        self.path_to_item = path_to_item_json
+        self.longest_feature_list_len = 0
+        self.shortest_feature_list_len = sys.maxsize
         self.item_id = list(item_keys)[0]
         # this is a unix time -> [price, amount sold] dict
         self.time_to_info_dict = {}
         for unit_time_lis in list(item_vals)[0]:
-            self.time_to_info_dict[unit_time_lis[0]] = unit_time_lis[1:]
-        self.number_of_unit_times = len(self.time_to_info_dict)
-    
+            feats_list = unit_time_lis[1:]
+            num_feats = len(feats_list)
+            if num_feats > self.longest_feature_list_len:
+                self.longest_feature_list_len = num_feats
+            if num_feats < self.shortest_feature_list_len:
+                self.shortest_feature_list_len = num_feats
 
+            self.time_to_info_dict[unit_time_lis[0]] = feats_list
+
+        self.number_of_unit_times = len(self.time_to_info_dict.keys())
+        self.maybe_the_bond = self.longest_feature_list_len == 1 and self.shortest_feature_list_len == 1
+    
+    def has_complete_data(self) -> bool:
+        return self.maybe_the_bond or self.shortest_feature_list_len == self.max_expected_item_feats and self.shortest_feature_list_len == self.longest_feature_list_len
+    
     def get_info_at_unix_time(self, unix_time):
         if unix_time in self.time_to_info_dict:
             return self.time_to_info_dict[unix_time]
@@ -72,16 +90,31 @@ class MarketItem:
 
     def set_unix_time_to_info_dict(self, new_dict):
         self.time_to_info_dict = new_dict
+    
+        
 
 class Market:
     def __init__(self):
         market_is = [MarketItem(path_to_market_item) for path_to_market_item in glob.glob(os.path.join(PATH_TO_MARKET_ITEM_DATA, "*.json"))]
         # market_items is a dict of item_id -> item's list of [time, price, amount_sold] instances.
+        self.number_of_items = len(market_is)
         self.market_items = {}
         self.item_ids = []
+        self.possible_bond_item_ids = []
+        self.min_item_feature_count = sys.maxsize
+        self.max_item_feature_count = 0
         for market_item in market_is:
             self.item_ids.append(market_item.item_id)
             self.market_items[market_item.item_id] = market_item
+            if not market_item.maybe_the_bond:
+                if market_item.longest_feature_list_len > self.max_item_feature_count:
+                    self.max_item_feature_count = market_item.longest_feature_list_len
+                if market_item.shortest_feature_list_len < self.min_item_feature_count:
+                    self.min_item_feature_count = market_item.shortest_feature_list_len
+            else:
+                self.possible_bond_item_ids.append(market_item.item_id)
+
+        self.forcasted_day_length = EMBEDDED_UPDATE_VEC_LEN + self.min_item_feature_count
         
         # number_of_infos_in_oldest_item is the number of [time, price, amount_sold] instances in the
         # item that has the most [time, price, amount_sold] instances, aka the longest runnning/oldest item.
@@ -91,11 +124,17 @@ class Market:
         self.markets_time_span = sorted(list(self.get_items_that(
                 lambda item: len(item.time_to_info_dict) == self.number_of_infos_in_oldest_item)[0].time_to_info_dict.keys()))
 
+    
+    def get_item_from_json_filename(self, file_name_json: str):
+        return self.get_items_that(
+            lambda item: item.path_to_item.endswith(file_name_json))[0]
+
     def get_items_that(self, predicate):
         '''
         Returns a list of MarketItems that match the given predicate.
         '''
         return [matching_item for matching_item in self.market_items.values() if predicate(matching_item)]
+    
     
     def get_item_with_id(self, id: str) -> MarketItem:
         if id in self.market_items:
@@ -103,12 +142,14 @@ class Market:
         else:
             return None
 
+    
     def balance_as_is(self, default_price, default_amount_sold):
         '''
         Balances the market based on it's current market_time_span
         '''
         self.balance(self.markets_time_span, default_price, default_amount_sold)
 
+    
     def balance(self, list_of_unix_times_to_balance_around, default_price, default_amount_sold):
         '''
         Given a list of unix times, makes every item in the market have info for the list of unix times
@@ -125,6 +166,7 @@ class Market:
 
         self.markets_time_span = sorted(list_of_unix_times_to_balance_around)
 
+    
     def is_balanced(self) -> bool:
         '''
         Checks if the entire market's items have entirely the same span of unix times.
@@ -140,15 +182,48 @@ class Market:
         
         return True
 
-    def build_and_write_features_matrix(self):
+    
+    def build_features_matrix(self):
         market_rep = pd.DataFrame({})
+        market_item_list = list(self.market_items.values())
 
         # self.markets_time_span is sorted during Market object construction, so we can
         # iterate over it now and know that we are increasing in time.
         for ms_unix_time in self.markets_time_span:
-            date = convert_json_ms_unix_time_to_yyyy_m_d(ms_unix_time)
+            items_feats_matrix = []
+            for market_item in market_item_list:
+                item_q_info = market_item.time_to_info_dict[ms_unix_time]
+                # only build unit of time matrices using the feature number that is the
+                # lowest feature number from all the market items.
+                # This means if some market items have only price and no amount sold while some
+                # market items have both price and amount sold, only the price feature will be used
+                # for all market items, thus building a constant size unit of time matrix.
+
+                # Also, price is the first item in the feats list, so reverse the list
+                items_feats_matrix.append(item_q_info[:self.shortest_feature_list_len].reverse())
+            
+            embedded_day_matrix = np.tile(
+                get_embedded_update_rep_on_date(convert_json_ms_unix_time_to_yyyy_m_d(ms_unix_time)),
+                (self.number_of_items, 1))
+            market_rep = pd.concat(
+                [market_rep, pd.DataFrame(embedded_day_matrix), pd.DataFrame(items_feats_matrix)], axis=1)
+
+        # make is so the items have their IDs as the DF row indices
+        market_rep.set_index([item.item_id for item in market_item_list])
+        self.market_with_updates_rep = market_rep
+
+    def save_market_with_updates_rep_as_csv(self, path_to_save_it_to) -> None:
+        self.market_with_updates_rep.to_csv(path_to_save_it_to)
 
 
+def get_embedded_update_rep_on_date(date_object: datetime.date):
+    embedded_update_path = os.path.join(
+            PATH_TO_PROCESSED_UPDATES_BY_YEAR,
+            date_object.year,
+            date_object.month,
+            f"{date_object.day}.embedded")
+            
+    return np.loadtxt(embedded_update_path, dtype=str) if os.path.exists(embedded_update_path) else np.zeros(EMBEDDED_UPDATE_VEC_LEN).astype(str)
 
 def save_fig(plt: matplotlib.pyplot, fig_id: str, tight_layout=True, fig_extension="png", resolution=300) -> None:
     '''
@@ -257,7 +332,6 @@ def get_updates_from_other_certain_misc_updates_pattern(files_with_pattern) -> N
         path_strt = os.path.join(PATH_TO_RAW_MISC_UPDATES, file_name)
         print(path_strt)
         if os.path.exists(path_strt):
-            print("YAY")
             lines = open(path_strt).readlines()
             i = 0
             while i < len(lines):
@@ -291,11 +365,10 @@ def get_updates_from_other_certain_misc_updates_pattern(files_with_pattern) -> N
 
 def convert_json_ms_unix_time_to_yyyy_m_d(unix_time: str):
     '''
-    Converts a given unix time string into a year, month, day date object.
+    Converts a given unix time string (in millisecond format) into a year, month, day date object.
     Our unix times are in millisecond format.
     '''
     return datetime.datetime.utcfromtimestamp(float(unix_time)/1000).date()
-
 
 def word_month_to_number_month(month: str) -> str:
     return WORD_MONTH_TO_NUMBER_MAP[month.lower()]
