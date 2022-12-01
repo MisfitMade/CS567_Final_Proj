@@ -13,6 +13,7 @@ import matplotlib.pyplot
 import json
 import glob
 
+import pandas as pd
 import numpy as np
 
 PROJECT_ROOT_DIR = os.path.dirname(os.path.realpath(__file__))
@@ -87,8 +88,8 @@ class Market:
         self.number_of_infos_in_oldest_item = np.array(list(map(lambda market_item: market_item.number_of_unit_times, market_is))).max()
 
         # markets_time_span is a list of the unix times from the item that has the most [time, price, amount_sold] instances.
-        self.markets_time_span = list(self.get_items_that(
-                lambda item: len(item.time_to_info_dict) == self.number_of_infos_in_oldest_item)[0].time_to_info_dict.keys())
+        self.markets_time_span = sorted(list(self.get_items_that(
+                lambda item: len(item.time_to_info_dict) == self.number_of_infos_in_oldest_item)[0].time_to_info_dict.keys()))
 
     def get_items_that(self, predicate):
         '''
@@ -138,6 +139,15 @@ class Market:
                 item_0_times = item_i_times
         
         return True
+
+    def build_and_write_features_matrix(self):
+        market_rep = pd.DataFrame({})
+
+        # self.markets_time_span is sorted during Market object construction, so we can
+        # iterate over it now and know that we are increasing in time.
+        for ms_unix_time in self.markets_time_span:
+            date = convert_json_ms_unix_time_to_yyyy_m_d(ms_unix_time)
+
 
 
 def save_fig(plt: matplotlib.pyplot, fig_id: str, tight_layout=True, fig_extension="png", resolution=300) -> None:
@@ -284,7 +294,7 @@ def convert_json_ms_unix_time_to_yyyy_m_d(unix_time: str):
     Converts a given unix time string into a year, month, day date object.
     Our unix times are in millisecond format.
     '''
-    datetime.datetime.utcfromtimestamp(float(unix_time)/1000)
+    return datetime.datetime.utcfromtimestamp(float(unix_time)/1000).date()
 
 
 def word_month_to_number_month(month: str) -> str:
