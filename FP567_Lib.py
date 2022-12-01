@@ -13,6 +13,8 @@ import matplotlib.pyplot
 import json
 import glob
 
+import numpy as np
+
 PROJECT_ROOT_DIR = os.path.dirname(os.path.realpath(__file__))
 PATH_TO_RESOURCES = os.path.join(PROJECT_ROOT_DIR, "resources")
 PATH_TO_MARKET_ITEM_DATA = os.path.join(PATH_TO_RESOURCES, "market_item_data")
@@ -43,6 +45,9 @@ NUMBER_OF_SECONDS_IN_A_UNIX_DAY = 86400
 
 class MarketItem:
     def __init__(self, path_to_item_json):
+        '''
+        Given a path to a json market item, reads it in and makes a MarketItem out of it.
+        '''
         item_data = json.load(open(path_to_item_json))
         item_keys = item_data.keys()
         item_vals = item_data.values()
@@ -56,7 +61,34 @@ class MarketItem:
 
 class Market:
     def __init__(self):
-        self.market_items = [MarketItem(path_to_market_item) for path_to_market_item in glob.glob(os.path.join(PATH_TO_MARKET_ITEM_DATA, "*.json"))]
+        market_is = [MarketItem(path_to_market_item) for path_to_market_item in glob.glob(os.path.join(PATH_TO_MARKET_ITEM_DATA, "*.json"))]
+        # market_items is a dict of item_id -> item's list of [time, price, amount_sold] instances.
+        self.market_items = {}
+        for market_item in market_is:
+            self.market_items[market_item.item_id] = market_item
+        
+        # number_of_infos_in_oldest_item is the number of [time, price, amount_sold] instances in the
+        # item that has the most [time, price, amount_sold] instances, aka the longest runnning/oldest item.
+        self.number_of_infos_in_oldest_item = np.array(list(map(lambda market_item: market_item.number_of_unit_times, market_is))).max()
+
+        # markets_time_span is a list of the unix times from the item that has the most [time, price, amount_sold] instances.
+        self.markets_time_span = list(map(
+            lambda unit_time_info: unit_time_info[0],
+            self.get_items_that(
+                lambda item: len(item.info_by_unit_time_list) == self.number_of_infos_in_oldest_item)[0].info_by_unit_time_list))
+
+    def get_items_that(self, predicate):
+        '''
+        Returns a list of MarketItems that match the given predicate.
+        '''
+        return [matching_item for matching_item in self.market_items.values() if predicate(matching_item)]
+    
+    def get_item_with_id(self, id: str) -> MarketItem:
+        if id in self.market_items:
+            return self.market_items[id]
+        else:
+            return None
+
 
 MARKET = Market()
 
