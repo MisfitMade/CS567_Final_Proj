@@ -16,6 +16,7 @@ import sys
 
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
 PROJECT_ROOT_DIR = os.path.dirname(os.path.realpath(__file__))
 PATH_TO_RESOURCES = os.path.join(PROJECT_ROOT_DIR, "resources")
@@ -34,7 +35,10 @@ PATH_TO_PROCESSED_UPDATES = os.path.join(PATH_TO_RESOURCES, "Processed_Updates")
 PATH_TO_PROCESSED_UPDATES_BY_YEAR = os.path.join(PATH_TO_PROCESSED_UPDATES, "by_year")
 PATH_TO_PLOTS = os.path.join(PROJECT_ROOT_DIR, "plots")
 
-PATH_TO_ASSEMBLED_FORCASTING_MATRIX = os.path.join(PATH_TO_RESOURCES, "forcasting_matrix.csv")
+FORCASTED_DAY_LEN_STR = "forcasted_day_length" 
+PATH_TO_FORCASTING_COMPONENTS = os.path.join(PATH_TO_RESOURCES, "forcasting")
+PATH_TO_ASSEMBLED_FORCASTING_MATRIX = os.path.join(PATH_TO_FORCASTING_COMPONENTS, "forcasting_matrix.csv")
+PATH_TO_ASSEMBLED_FORCASTING_MATRIX_SPECS = os.path.join(PATH_TO_FORCASTING_COMPONENTS, "forcasting_matrix_specs.json")
 
 RUNESCAPE_YEARS = list(map(str, range(1998, 2023)))
 MONTHS = list(map(str.lower, calendar.month_name[1:]))
@@ -212,9 +216,64 @@ class Market:
         market_rep.set_index([item.item_id for item in market_item_list])
         self.market_with_updates_rep = market_rep
 
-    def save_market_with_updates_rep_as_csv(self, path_to_save_it_to) -> None:
-        self.market_with_updates_rep.to_csv(path_to_save_it_to)
+    def save_market_with_updates_rep_as_csv(
+        self,
+        path_to_save_it_to=PATH_TO_ASSEMBLED_FORCASTING_MATRIX,
+        path_to_save_specs=PATH_TO_ASSEMBLED_FORCASTING_MATRIX_SPECS) -> None:
 
+        self.market_with_updates_rep.to_csv(path_to_save_it_to)
+        spec_dict = {
+            FORCASTED_DAY_LEN_STR : self.forcasted_day_length
+        }
+        open(path_to_save_specs, "w").write(json.dumps(spec_dict, indent=4))
+
+
+# Plotting time series function
+# https://colab.research.google.com/github/ageron/handson-ml2/blob/master/15_processing_sequences_using_rnns_and_cnns.ipynb#scrollTo=YAJb9TLU7vkZ
+def plot_time_series(
+    time_series,
+    number_of_steps,
+    y=None,
+    y_pred=None,
+    x_label="$t$",
+    y_label="$x(t)$") -> None:
+
+    plt.plot(time_series, ".-")
+    if y is not None:
+        plt.plot(number_of_steps, y, "bo", label="Target")
+    if y_pred is not None:
+        plt.plot(number_of_steps, y_pred, "rx", markersize=10, label="Prediction")
+    plt.grid(True)
+    if x_label:
+        plt.xlabel(x_label, fontsize=16)
+    if y_label:
+        plt.ylabel(y_label, fontsize=16, rotation=0)
+    plt.hlines(0, 0, 100, linewidth=1)
+    plt.axis([0, number_of_steps + 1, -1, 1])
+    if y or y_pred:
+        plt.legend(fontsize=14, loc="upper left")
+
+
+def get_forcasting_market_df(get_a_random_df=False) -> pd.DataFrame:
+    '''
+    Gets the market forcasting matrix as a DF either from disk (if it exists),
+    or makes one, then returns it.
+    '''
+    if get_a_random_df:
+        # This is used for practicing with time series.
+        return pd.DataFrame(np.random.rand(3500, 30000)), 30
+
+    if os.path.exists(PATH_TO_ASSEMBLED_FORCASTING_MATRIX):
+        return pd.read_csv(PATH_TO_ASSEMBLED_FORCASTING_MATRIX), (
+            json.load(open(PATH_TO_ASSEMBLED_FORCASTING_MATRIX_SPECS, "r")) if os.path.exists(PATH_TO_ASSEMBLED_FORCASTING_MATRIX_SPECS) else None)
+    else:
+        market = Market()
+        market.balance_as_is(0, 0)
+        if not market.is_balanced():
+            raise Exception("Error. Market did not balance upon request.")
+        # else
+        market.build_features_matrix()
+        return market.market_with_updates_rep, market.forcasted_day_length
 
 def get_embedded_update_rep_on_date(date_object: datetime.date):
     embedded_update_path = os.path.join(
