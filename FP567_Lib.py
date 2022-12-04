@@ -57,6 +57,8 @@ DAYS_OF_MONTH = list(map(str, range(1, 32)))
 DAYS_OF_WEEK_ABRV = calendar.day_abbr[:]
 NUMBER_OF_SECONDS_IN_A_UNIX_DAY = 86400
 EMBEDDED_UPDATE_VEC_LEN = 28
+
+TRAINING_PARAMS_JSON = "training_params.json"
 BATCH_SIZE_STR = "batch_size"
 PREDICT_SIZE_STR = "predict_size"
 DAYS_TO_FORCAST_STR = "days_to_forcast"
@@ -336,7 +338,9 @@ def save_training_params(
     }
 
     # write the specs as a json
-    open(os.path.join(path_to_save_at, "training_params.json"), "w").write(json.dumps(dict, indent=4))
+    open(os.path.join(
+        path_to_save_at,
+        TRAINING_PARAMS_JSON), "w").write(json.dumps(dict, indent=4))
 
 
 def plot_loss(plt: matplotlib.pyplot, history, path_to_folder)-> None:
