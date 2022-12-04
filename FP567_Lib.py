@@ -13,12 +13,18 @@ import matplotlib.pyplot
 import json
 import glob
 import sys
+import random
+import pathlib
 
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import tensorflow as tf
+
+from contextlib import redirect_stdout
 
 PROJECT_ROOT_DIR = os.path.dirname(os.path.realpath(__file__))
+PLOTS_DIR = "plots"
 PATH_TO_RESOURCES = os.path.join(PROJECT_ROOT_DIR, "resources")
 PATH_TO_MARKET_ITEM_DATA = os.path.join(PATH_TO_RESOURCES, "market_item_data")
 PATH_TO_RAW_UPDATES = os.path.join(PATH_TO_RESOURCES, "Raw_Updates")
@@ -33,7 +39,8 @@ PATH_TO_NOISY_JUNK_UPDATES = os.path.join(PATH_TO_RAW_NOISY_UPDATES, "junk?")
 PATH_TO_NOISY_DATE_UNKNOWN_UPDATES = os.path.join(PATH_TO_RAW_NOISY_UPDATES, "junk?")
 PATH_TO_PROCESSED_UPDATES = os.path.join(PATH_TO_RESOURCES, "Processed_Updates")
 PATH_TO_PROCESSED_UPDATES_BY_YEAR = os.path.join(PATH_TO_PROCESSED_UPDATES, "by_year")
-PATH_TO_PLOTS = os.path.join(PROJECT_ROOT_DIR, "plots")
+PATH_TO_PLOTS = os.path.join(PROJECT_ROOT_DIR, "PLOTS_DIR")
+PATH_TO_MODELS_DIRECTORY = os.path.join(PROJECT_ROOT_DIR, "models")
 
 FORCASTED_DAY_LEN_STR = "forcasted_day_length" 
 PATH_TO_FORCASTING_COMPONENTS = os.path.join(PATH_TO_RESOURCES, "forcasting")
@@ -50,6 +57,11 @@ DAYS_OF_MONTH = list(map(str, range(1, 32)))
 DAYS_OF_WEEK_ABRV = calendar.day_abbr[:]
 NUMBER_OF_SECONDS_IN_A_UNIX_DAY = 86400
 EMBEDDED_UPDATE_VEC_LEN = 28
+BATCH_SIZE_STR = "batch_size"
+PREDICT_SIZE_STR = "predict_size"
+DAYS_TO_FORCAST_STR = "days_to_forcast"
+TIME_WINDOW_SIZE_STR = "time_window_size"
+NUMBER_ITEMS_PREDICTED_STR = "number_items_predicted"
 
 class MarketItem:
     def __init__(self, path_to_item_json, max_expected_item_feats=2):
@@ -228,6 +240,32 @@ class Market:
         open(path_to_save_specs, "w").write(json.dumps(spec_dict, indent=4))
 
 
+def make_numpy_mat_into_tf_sparse_tensor(mat, make_practice_sparse=False):
+    '''
+    Takes a dense numpy array and returns a sparse tensor.
+    '''
+    if make_practice_sparse:
+        # if in here, then the given matrix is a practice matrix and want it to be
+        # more sparse than it is to better resemble our training data later.
+        total_rows = len(mat)
+        for i in random.sample(range(total_rows), int(total_rows/2)):
+            mat[i] = [0] * len(mat[i])
+
+    non_zero_indices = np.nonzero(mat)
+    row_indices = non_zero_indices[0]
+    col_indices = non_zero_indices[1]
+
+    idxs = list(zip(row_indices, col_indices))
+    vals = mat[non_zero_indices]
+
+    if len(idxs) != 0 and vals.shape[0] is not None and vals.shape[0] != 0:
+        return tf.SparseTensor(
+            indices=idxs,
+            values=vals,
+            dense_shape=mat.shape)
+    else:
+        return None
+
 # Plotting time series function
 # https://colab.research.google.com/github/ageron/handson-ml2/blob/master/15_processing_sequences_using_rnns_and_cnns.ipynb#scrollTo=YAJb9TLU7vkZ
 def plot_time_series(
@@ -253,6 +291,126 @@ def plot_time_series(
     if y or y_pred:
         plt.legend(fontsize=14, loc="upper left")
 
+class InputLayer(tf.keras.layers.InputLayer):
+    def __init__(self, output_dim, **kwargs):
+        super().__init__()
+        self.output_dim = output_dim
+        super(InputLayer, self).__init__(**kwargs)
+
+
+
+    def get_output_shape_for(self, input_shape):
+        return (input_shape[0], self.output_dim)
+
+
+def print_model_summary_to_file(model: tf.keras.Model, path_to_model_root: str) -> None:
+    '''
+    Prints the given model's summary to the given folder.
+    '''
+
+    with open(os.path.join(path_to_model_root, "Model_Summary.txt"), 'w') as f:
+        with redirect_stdout(f):
+            model.summary()
+
+
+def save_training_params(
+    batch_size,
+    num_items_predicted,
+    predict_size,
+    days_to_forcast,
+    time_window_size,
+    path_to_save_at):
+    '''
+    Saves the given model hyper params to a json at the path given
+    '''
+
+    dict = {
+        BATCH_SIZE_STR: str(batch_size),
+        NUMBER_ITEMS_PREDICTED_STR: str(num_items_predicted),
+        PREDICT_SIZE_STR: str(predict_size),
+        DAYS_TO_FORCAST_STR: str(days_to_forcast),
+        TIME_WINDOW_SIZE_STR: str(time_window_size),
+    }
+
+    # write the specs as a json
+    open(os.path.join(path_to_save_at, "training_params.json"), "w").write(json.dumps(dict, indent=4))
+
+
+def plot_loss(plt: matplotlib.pyplot, history, path_to_folder)-> None:
+
+    # plot loss
+    plt.clf()
+    plt.plot(history.history['loss'])
+    plt.plot(history.history['val_loss'])
+    plt.ylim((0,4))
+    plt.yticks(np.arange(0, 4.5, step=0.5))
+    plt.title('Model Loss')
+    plt.ylabel('Loss')
+    plt.xlabel('Epoch')
+    plt.legend(['Training', 'Validation'], loc='upper left')
+
+    # ensure that the path to save it to exists
+    path = os.path.join(path_to_folder, PLOTS_DIR)
+    pathlib.Path(path).mkdir(parents=True, exist_ok=True)
+    save_fig(plt, os.path.join(path, "model_loss"))
+
+
+def plot_accuracy(plt: matplotlib.pyplot, history, path_to_folder)-> None:
+
+    # plot accuracy
+    plt.clf()
+    plt.plot(history.history['accuracy'])
+    plt.plot(history.history['val_accuracy'])
+    plt.ylim((0,1))
+    plt.yticks(np.arange(0, 1.1, step=0.1))
+    plt.title('Model Accuracy')
+    plt.ylabel('Accuracy')
+    plt.xlabel('Epoch')
+    plt.legend(['Training', 'Validation'], loc='upper left')
+
+    # ensure that the path to save it to exists
+    path = os.path.join(path_to_folder, PLOTS_DIR)
+    pathlib.Path(path).mkdir(parents=True, exist_ok=True)
+    save_fig(plt, os.path.join(path, "model_accuracy"))
+
+
+def get_model(tensor_shape, batch_size, predict_size):
+
+    '''
+    The input to our model is two lists, each full of sparse tensors.
+        X_training = 
+        [
+            sparse_tensor(items_feats from time 0 to time n),
+            sparse_tensor(items_feats from time 0 to time n + p),
+            ...,
+            sparse_tensor(items_feats from time 0 to time n + i*p)
+        ]
+        Y_training = 
+        [
+            sparse_tensor(items_feats from time n to time n + p),
+            sparse_tensor(items_feats from time (n + p) to time (n + p) + p),
+            ...,
+            sparse_tensor(items_feats from time (n + i*p) to time (n + i*p) + p)
+        ]
+    '''
+    tf.debugging.disable_traceback_filtering()
+
+    model = tf.keras.Sequential()
+    model.add(tf.keras.layers.InputLayer(input_shape=tensor_shape, batch_size=batch_size, dtype=np.float16))
+    model.add(tf.keras.layers.LSTM(units=tensor_shape[1], return_sequences=True))
+    model.add(tf.keras.layers.Dropout(0.30))
+    step_down = int(tensor_shape[1]/2)
+    model.add(tf.keras.layers.LSTM(step_down, return_sequences=True))
+    model.add(tf.keras.layers.Dropout(0.20))
+    step_down = int(step_down/2)
+    model.add(tf.keras.layers.LSTM(step_down, return_sequences=True))
+    model.add(tf.keras.layers.Dropout(0.20))
+    model.add(tf.keras.layers.TimeDistributed(tf.keras.layers.Dense(predict_size)))
+
+    model.compile(loss="mse", optimizer="adam", metrics=["last_time_step_mse"])
+
+    return model
+
 
 def get_forcasting_market_df(get_a_random_df=False) -> pd.DataFrame:
     '''
@@ -274,6 +432,7 @@ def get_forcasting_market_df(get_a_random_df=False) -> pd.DataFrame:
         # else
         market.build_features_matrix()
         return market.market_with_updates_rep, market.forcasted_day_length
+
 
 def get_embedded_update_rep_on_date(date_object: datetime.date):
     embedded_update_path = os.path.join(
