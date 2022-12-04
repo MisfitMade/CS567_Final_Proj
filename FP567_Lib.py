@@ -62,6 +62,7 @@ PREDICT_SIZE_STR = "predict_size"
 DAYS_TO_FORCAST_STR = "days_to_forcast"
 TIME_WINDOW_SIZE_STR = "time_window_size"
 NUMBER_ITEMS_PREDICTED_STR = "number_items_predicted"
+WINDOW_SIZE_SCALE = "window_size_scale"
 
 class MarketItem:
     def __init__(self, path_to_item_json, max_expected_item_feats=2):
@@ -316,8 +317,9 @@ def print_model_summary_to_file(model: tf.keras.Model, path_to_model_root: str) 
 def save_training_params(
     batch_size,
     num_items_predicted,
-    predict_size,
     days_to_forcast,
+    scale_of_window_size_to_days_to_predict,
+    predict_size,
     time_window_size,
     path_to_save_at):
     '''
@@ -327,6 +329,7 @@ def save_training_params(
     dict = {
         BATCH_SIZE_STR: str(batch_size),
         NUMBER_ITEMS_PREDICTED_STR: str(num_items_predicted),
+        WINDOW_SIZE_SCALE: str(scale_of_window_size_to_days_to_predict),
         PREDICT_SIZE_STR: str(predict_size),
         DAYS_TO_FORCAST_STR: str(days_to_forcast),
         TIME_WINDOW_SIZE_STR: str(time_window_size),
