@@ -4,7 +4,7 @@
 #### Maybe not neccesary, but guarantees you'll be able to use, debug, run the code + keep you from creating a clashing Python version dependency between Python projects. Have conda installed, then in a conda terminal:
 * `conda create -n 567FP python=3.10`
 * `conda activate 567FP`
-* `pip install tensorflow tensorflow_hub jupyterlab numpy matplotlib pandas scikit-learn`
+* `pip install tensorflow tensorflow_hub zarr jupyterlab numpy matplotlib pandas scikit-learn`
 
 Now, when you work in the project and/or run its code, do so in this 567FP environment/conda space.
 
