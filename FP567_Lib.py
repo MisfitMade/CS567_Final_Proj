@@ -42,6 +42,10 @@ PATH_TO_PROCESSED_UPDATES_BY_YEAR = os.path.join(PATH_TO_PROCESSED_UPDATES, "by_
 PATH_TO_PLOTS = os.path.join(PROJECT_ROOT_DIR, "PLOTS_DIR")
 PATH_TO_MODELS_DIRECTORY = os.path.join(PROJECT_ROOT_DIR, "models")
 
+AMOUNT_SOLD = "Amount Sold"
+PRICE = "Price"
+DATE = "Date"
+
 FORCASTED_DAY_LEN_STR = "forcasted_day_length" 
 PATH_TO_FORCASTING_COMPONENTS = os.path.join(PATH_TO_RESOURCES, "forcasting")
 PATH_TO_ASSEMBLED_FORCASTING_MATRIX = os.path.join(PATH_TO_FORCASTING_COMPONENTS, "forcasting_matrix.csv")
@@ -93,6 +97,11 @@ class MarketItem:
             if num_feats < self.shortest_feature_list_len:
                 self.shortest_feature_list_len = num_feats
 
+            # the bond will get a bunch of zeros added for amount solds. we will just have to
+            # watch out for it.
+            if num_feats == 1:
+                feats_list.append(0)
+                
             self.time_to_info_dict[unit_time_lis[0]] = feats_list
 
         self.number_of_unit_times = len(self.time_to_info_dict.keys())
@@ -406,12 +415,14 @@ def get_model(tensor_shape, batch_size, predict_size):
     model.add(tf.keras.layers.InputLayer(input_shape=tensor_shape, batch_size=batch_size, dtype=np.float16))
     model.add(tf.keras.layers.LSTM(units=tensor_shape[1], return_sequences=True))
     model.add(tf.keras.layers.Dropout(0.30))
-    step_down = int(tensor_shape[1]/2)
+    step_down = int(tensor_shape[1]/4)
     model.add(tf.keras.layers.LSTM(step_down, return_sequences=True))
     model.add(tf.keras.layers.Dropout(0.20))
+    '''
     step_down = int(step_down/2)
     model.add(tf.keras.layers.LSTM(step_down, return_sequences=True))
     model.add(tf.keras.layers.Dropout(0.20))
+    '''
     model.add(tf.keras.layers.TimeDistributed(tf.keras.layers.Dense(predict_size)))
 
     model.compile(loss="mse", optimizer="adam", metrics=["last_time_step_mse"])
