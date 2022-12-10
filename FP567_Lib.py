@@ -15,6 +15,7 @@ import glob
 import sys
 import random
 import pathlib
+import zarr
 
 import pandas as pd
 import numpy as np
@@ -47,9 +48,16 @@ PRICE = "Price"
 DATE = "Date"
 
 FORCASTED_DAY_LEN_STR = "forcasted_day_length" 
+NUMBER_MARKET_ITEMS = "number_market_items"
 PATH_TO_FORCASTING_COMPONENTS = os.path.join(PATH_TO_RESOURCES, "forcasting")
-PATH_TO_ASSEMBLED_FORCASTING_MATRIX = os.path.join(PATH_TO_FORCASTING_COMPONENTS, "forcasting_matrix.csv")
+PATH_TO_ASSEMBLED_FORCASTING_MATRIX = os.path.join(PATH_TO_FORCASTING_COMPONENTS, "forcasting_matrix.zarr")
 PATH_TO_ASSEMBLED_FORCASTING_MATRIX_SPECS = os.path.join(PATH_TO_FORCASTING_COMPONENTS, "forcasting_matrix_specs.json")
+
+PATH_TO_TRAINING_STACKS = os.path.join(PATH_TO_FORCASTING_COMPONENTS, "training.zarr")
+PATH_TO_X_WINDOW_STACK_TRAINING = os.path.join(PATH_TO_FORCASTING_COMPONENTS, "training_x_windows.zarr")
+PATH_TO_Y_WINDOW_STACK_TRAINING = os.path.join(PATH_TO_FORCASTING_COMPONENTS, "training_y_windows.zarr")
+PATH_TO_X_WINDOW_STACK_VALIDATION = os.path.join(PATH_TO_FORCASTING_COMPONENTS, "validation_x_windows.zarr")
+PATH_TO_Y_WINDOW_STACK_VALIDATION = os.path.join(PATH_TO_FORCASTING_COMPONENTS, "validation_y_windows.zarr")
 
 RUNESCAPE_YEARS = list(map(str, range(1998, 2023)))
 MONTHS = list(map(str.lower, calendar.month_name[1:]))
@@ -92,20 +100,26 @@ class MarketItem:
         for unit_time_lis in list(item_vals)[0]:
             feats_list = unit_time_lis[1:]
             num_feats = len(feats_list)
-            if num_feats > self.longest_feature_list_len:
-                self.longest_feature_list_len = num_feats
-            if num_feats < self.shortest_feature_list_len:
-                self.shortest_feature_list_len = num_feats
 
+            # Hack to account for no amount solds
             # the bond will get a bunch of zeros added for amount solds. we will just have to
             # watch out for it.
             if num_feats == 1:
                 feats_list.append(0)
+            num_feats = len(feats_list) 
+
+            if num_feats > self.longest_feature_list_len:
+                self.longest_feature_list_len = num_feats
+            if num_feats < self.shortest_feature_list_len:
+                self.shortest_feature_list_len = num_feats
                 
+            # reverse it so the price is the last column in our day matrix rep later
+            feats_list.reverse()
             self.time_to_info_dict[unit_time_lis[0]] = feats_list
 
         self.number_of_unit_times = len(self.time_to_info_dict.keys())
         self.maybe_the_bond = self.longest_feature_list_len == 1 and self.shortest_feature_list_len == 1
+
     
     def has_complete_data(self) -> bool:
         return self.maybe_the_bond or self.shortest_feature_list_len == self.max_expected_item_feats and self.shortest_feature_list_len == self.longest_feature_list_len
@@ -142,6 +156,7 @@ class Market:
             else:
                 self.possible_bond_item_ids.append(market_item.item_id)
 
+        self.number_of_items = len(self.market_items.values())
         self.forcasted_day_length = EMBEDDED_UPDATE_VEC_LEN + self.min_item_feature_count
         
         # number_of_infos_in_oldest_item is the number of [time, price, amount_sold] instances in the
@@ -188,7 +203,7 @@ class Market:
             balanced_info_dict = {}
             for unix_time in list_of_unix_times_to_balance_around:
                 info_at_unix_time = item.get_info_at_unix_time(unix_time)
-                balanced_info_dict[unix_time] = [default_price, default_amount_sold] if info_at_unix_time is None else info_at_unix_time
+                balanced_info_dict[unix_time] = [default_amount_sold, default_price] if info_at_unix_time is None else info_at_unix_time
 
             self.market_items[item_id].set_unix_time_to_info_dict(balanced_info_dict)
 
@@ -212,11 +227,40 @@ class Market:
 
     
     def build_features_matrix(self):
-        market_rep = pd.DataFrame({})
         market_item_list = list(self.market_items.values())
 
         # self.markets_time_span is sorted during Market object construction, so we can
         # iterate over it now and know that we are increasing in time.
+
+        # We are making a large matrix, it overflows RAM, so use zarr to write it to disk as it is made.
+        z = zarr.open(
+            PATH_TO_ASSEMBLED_FORCASTING_MATRIX,
+            mode='w',
+            shape=(self.number_of_items, len(self.markets_time_span)*self.forcasted_day_length),
+            chunks=(self.number_of_items, self.forcasted_day_length),
+            dtype="<f")
+
+        time_series = pd.Series(self.markets_time_span)
+        market_item_series = pd.Series(market_item_list)
+
+        # get all the embeddings in number_of_item x 28 len chunks
+        embeddings = np.array(time_series.map(
+            lambda time:  np.tile(
+                get_embedded_update_rep_on_date(convert_json_ms_unix_time_to_yyyy_m_d(time)),
+                (self.number_of_items, 1),
+                ).astype(np.float16)).to_list())
+        # build a day matrix, write it to the zarr struct
+        for i, ms_unix_time in enumerate(self.markets_time_span):
+            print(f"{i}/{len(self.markets_time_span)}")
+            day_i_item_specs = np.array(market_item_series.map(lambda mi: mi.time_to_info_dict[ms_unix_time]).to_list())
+
+            # append this matrix like it is a column
+            cur_chunk_start = i*self.forcasted_day_length
+            z[:,cur_chunk_start:cur_chunk_start+self.forcasted_day_length] = np.hstack([embeddings[i], day_i_item_specs])
+        
+        '''
+        THIS WAY BELOW IS TOO SLOW AND OVERFLOWS RAM
+        market_rep = pd.DataFrame({})
         for ms_unix_time in self.markets_time_span:
             items_feats_matrix = []
             for market_item in market_item_list:
@@ -239,7 +283,10 @@ class Market:
         # make is so the items have their IDs as the DF row indices
         market_rep.set_index([item.item_id for item in market_item_list])
         self.market_with_updates_rep = market_rep
+        '''
 
+    '''
+    THIS METHOD IS NOW DONE IN build_features_matrix BY ZARR
     def save_market_with_updates_rep_as_csv(
         self,
         path_to_save_it_to=PATH_TO_ASSEMBLED_FORCASTING_MATRIX,
@@ -250,7 +297,42 @@ class Market:
             FORCASTED_DAY_LEN_STR : self.forcasted_day_length
         }
         open(path_to_save_specs, "w").write(json.dumps(spec_dict, indent=4))
+    '''
+    def save_market_specs(
+        self,
+        path_to_save_specs=PATH_TO_ASSEMBLED_FORCASTING_MATRIX_SPECS) -> None:
 
+        spec_dict = {
+            FORCASTED_DAY_LEN_STR : self.forcasted_day_length,
+            NUMBER_MARKET_ITEMS: self.number_of_items,
+        }
+        open(path_to_save_specs, "w").write(json.dumps(spec_dict, indent=4))
+
+
+def window_slider(
+    slide_len,
+    window_size,
+    days_mat,
+    func_to_perform_after_window_slide) -> int:
+    '''
+    Slides a window along days_mat's cols, performing a fnx after every slide.
+    Returns the number of times the window, slid slide_len at a time, fits in
+    the given days_mat.
+    '''
+    i = 0
+    while True:
+        window_start = slide_len * i
+        window_end = window_start + window_size
+        predict_window_end = int(window_end+slide_len)
+        if predict_window_end > days_mat.shape[1]:
+            break
+
+        func_to_perform_after_window_slide(
+            i, days_mat, window_start, window_end, predict_window_end)
+        
+        i = i + 1
+
+    return i
 
 def make_numpy_mat_into_tf_sparse_tensor(mat, make_practice_sparse=False):
     '''
@@ -271,10 +353,10 @@ def make_numpy_mat_into_tf_sparse_tensor(mat, make_practice_sparse=False):
     vals = mat[non_zero_indices]
 
     if len(idxs) != 0 and vals.shape[0] is not None and vals.shape[0] != 0:
-        return tf.SparseTensor(
+        return tf.sparse_to_dense(tf.SparseTensor(
             indices=idxs,
             values=vals,
-            dense_shape=mat.shape)
+            dense_shape=mat.shape))
     else:
         return None
 
@@ -414,10 +496,10 @@ def get_model(tensor_shape, batch_size, predict_size):
     model = tf.keras.Sequential()
     model.add(tf.keras.layers.InputLayer(input_shape=tensor_shape, batch_size=batch_size, dtype=np.float16))
     model.add(tf.keras.layers.LSTM(units=tensor_shape[1], return_sequences=True))
-    model.add(tf.keras.layers.Dropout(0.30))
+    model.add(tf.keras.layers.Dropout(0.25))
     step_down = int(tensor_shape[1]/4)
     model.add(tf.keras.layers.LSTM(step_down, return_sequences=True))
-    model.add(tf.keras.layers.Dropout(0.20))
+    model.add(tf.keras.layers.Dropout(0.25))
     '''
     step_down = int(step_down/2)
     model.add(tf.keras.layers.LSTM(step_down, return_sequences=True))
@@ -430,7 +512,7 @@ def get_model(tensor_shape, batch_size, predict_size):
     return model
 
 
-def get_forcasting_market_df(get_a_random_df=False) -> pd.DataFrame:
+def read_saved_forcasting_matrix(get_a_random_df=False) -> pd.DataFrame:
     '''
     Gets the market forcasting matrix as a DF either from disk (if it exists),
     or makes one, then returns it.
@@ -439,24 +521,22 @@ def get_forcasting_market_df(get_a_random_df=False) -> pd.DataFrame:
         # This is used for practicing with time series.
         return pd.DataFrame(np.random.rand(3500, 30000)), 30
 
-    if os.path.exists(PATH_TO_ASSEMBLED_FORCASTING_MATRIX):
-        return pd.read_csv(PATH_TO_ASSEMBLED_FORCASTING_MATRIX), (
-            json.load(open(PATH_TO_ASSEMBLED_FORCASTING_MATRIX_SPECS, "r")) if os.path.exists(PATH_TO_ASSEMBLED_FORCASTING_MATRIX_SPECS) else None)
-    else:
+    if not os.path.exists(PATH_TO_ASSEMBLED_FORCASTING_MATRIX):
         market = Market()
         market.balance_as_is(0, 0)
         if not market.is_balanced():
             raise Exception("Error. Market did not balance upon request.")
         # else
         market.build_features_matrix()
-        return market.market_with_updates_rep, market.forcasted_day_length
 
+    return zarr.open(PATH_TO_ASSEMBLED_FORCASTING_MATRIX, mode='r'), (
+            json.load(open(PATH_TO_ASSEMBLED_FORCASTING_MATRIX_SPECS, "r")) if os.path.exists(PATH_TO_ASSEMBLED_FORCASTING_MATRIX_SPECS) else None)
 
 def get_embedded_update_rep_on_date(date_object: datetime.date):
     embedded_update_path = os.path.join(
             PATH_TO_PROCESSED_UPDATES_BY_YEAR,
-            date_object.year,
-            date_object.month,
+            str(date_object.year),
+            str(date_object.month),
             f"{date_object.day}.embedded")
             
     return np.loadtxt(embedded_update_path, dtype=str) if os.path.exists(embedded_update_path) else np.zeros(EMBEDDED_UPDATE_VEC_LEN).astype(str)
