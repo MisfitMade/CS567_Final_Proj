@@ -494,7 +494,11 @@ def get_model(tensor_shape, batch_size, predict_size):
     tf.debugging.disable_traceback_filtering()
 
     model = tf.keras.Sequential()
-    model.add(tf.keras.layers.InputLayer(input_shape=tensor_shape, batch_size=batch_size, dtype=np.float16))
+    model.add(tf.keras.layers.InputLayer(
+        input_shape=tensor_shape,
+        batch_size=batch_size,
+        #sparse=True,
+        dtype=tf.float16))
     model.add(tf.keras.layers.LSTM(units=tensor_shape[1], return_sequences=True))
     model.add(tf.keras.layers.Dropout(0.25))
     step_down = int(tensor_shape[1]/4)
@@ -507,7 +511,7 @@ def get_model(tensor_shape, batch_size, predict_size):
     '''
     model.add(tf.keras.layers.TimeDistributed(tf.keras.layers.Dense(predict_size)))
 
-    model.compile(loss="mse", optimizer="adam", metrics=["last_time_step_mse"])
+    model.compile(loss="mse", optimizer="adam")
 
     return model
 
