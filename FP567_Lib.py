@@ -501,9 +501,9 @@ def get_model(tensor_shape, batch_size, predict_size):
         dtype=tf.float16))
     model.add(tf.keras.layers.LSTM(units=tensor_shape[1], return_sequences=True))
     model.add(tf.keras.layers.Dropout(0.25))
-    step_down = int(tensor_shape[1]/4)
-    model.add(tf.keras.layers.LSTM(step_down, return_sequences=True))
-    model.add(tf.keras.layers.Dropout(0.25))
+    #step_down = int(tensor_shape[1]/4)
+    #model.add(tf.keras.layers.LSTM(step_down, return_sequences=True))
+    #model.add(tf.keras.layers.Dropout(0.25))
     '''
     step_down = int(step_down/2)
     model.add(tf.keras.layers.LSTM(step_down, return_sequences=True))
