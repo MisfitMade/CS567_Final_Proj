@@ -14,9 +14,4 @@ Now, when you work in the project and/or run its code, do so in this 567FP envir
 * `Embedding_Updates.ipynb` -- This is a notebook used for cleaning, sorting, embedding and reducing the dimension of the updates.
 * `FP567_Forcasting.ipynb` -- This is a notebook used for loading in saved models, using them to forcast the state of the market around certain dates, plus inspect the true state of the market around that date and compare.
 * `extract price.py` -- This is a python file that returns the price 30 days before and 30 days after the given date
-## General setup before running any code
-* Python
-* Tensorflow
-* Numpy
-* Matplotlib
-## Using the CS567_Final_Proj code
+* `LSTM_Pred_Forecasting.ipynb` -- This a notebook used to forcast the missing amount sold values for our market item data.
