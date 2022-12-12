@@ -1,0 +1,9 @@
+{
+    "batch_size": "11",
+    "per_fit_batch_size": "22",
+    "number_items_predicted": "3875",
+    "window_size_scale": "12",
+    "predict_size": "210",
+    "days_to_forcast": "7",
+    "time_window_size": "2520"
+}

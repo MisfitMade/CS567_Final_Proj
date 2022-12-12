@@ -72,6 +72,7 @@ EMBEDDED_UPDATE_VEC_LEN = 28
 
 TRAINING_PARAMS_JSON = "training_params.json"
 BATCH_SIZE_STR = "batch_size"
+PER_FIT_BATCH_SIZE_STR = "per_fit_batch_size"
 PREDICT_SIZE_STR = "predict_size"
 DAYS_TO_FORCAST_STR = "days_to_forcast"
 TIME_WINDOW_SIZE_STR = "time_window_size"
@@ -313,7 +314,8 @@ def window_slider(
     slide_len,
     window_size,
     days_mat,
-    func_to_perform_after_window_slide) -> int:
+    func_to_perform_after_window_slide,
+    gatherer=None) -> int:
     '''
     Slides a window along days_mat's cols, performing a fnx after every slide.
     Returns the number of times the window, slid slide_len at a time, fits in
@@ -328,7 +330,7 @@ def window_slider(
             break
 
         func_to_perform_after_window_slide(
-            i, days_mat, window_start, window_end, predict_window_end)
+            i, days_mat, window_start, window_end, predict_window_end, gatherer)
         
         i = i + 1
 
@@ -409,6 +411,7 @@ def print_model_summary_to_file(model: tf.keras.Model, path_to_model_root: str) 
 
 def save_training_params(
     batch_size,
+    per_fit_batch_size,
     num_items_predicted,
     days_to_forcast,
     scale_of_window_size_to_days_to_predict,
@@ -421,6 +424,7 @@ def save_training_params(
 
     dict = {
         BATCH_SIZE_STR: str(batch_size),
+        PER_FIT_BATCH_SIZE_STR: str(per_fit_batch_size),
         NUMBER_ITEMS_PREDICTED_STR: str(num_items_predicted),
         WINDOW_SIZE_SCALE: str(scale_of_window_size_to_days_to_predict),
         PREDICT_SIZE_STR: str(predict_size),
@@ -433,6 +437,32 @@ def save_training_params(
         path_to_save_at,
         TRAINING_PARAMS_JSON), "w").write(json.dumps(dict, indent=4))
 
+class PriceAndAmountSoldGatherer:
+    def __init__(self) -> None:
+        self.pred_prices = []
+        self.pred_a_s = []
+    def add_price_pred(self, preds):
+        self.pred_prices.append(preds)
+    def add_a_s_pred(self, preds):
+        self.pred_a_s.append(preds)
+    def get_price_preds_mat(self):
+        return np.concatenate(self.pred_prices, axis=1)
+    def get_a_s_preds_mat(self):
+        return np.concatenate(self.pred_a_s, axis=1)
+
+class DummyLossHist:
+    def __init__(self, loss, val_loss) -> None:
+        self.history = {
+            "loss": loss,
+            "val_loss": val_loss,
+        }
+
+class DummyAccHist:
+    def __init__(self, loss, val_loss) -> None:
+        self.history = {
+            "acc": loss,
+            "val_acc": val_loss,
+        }
 
 def plot_loss(plt: matplotlib.pyplot, history, path_to_folder)-> None:
 
@@ -440,8 +470,8 @@ def plot_loss(plt: matplotlib.pyplot, history, path_to_folder)-> None:
     plt.clf()
     plt.plot(history.history['loss'])
     plt.plot(history.history['val_loss'])
-    plt.ylim((0,4))
-    plt.yticks(np.arange(0, 4.5, step=0.5))
+    plt.ylim((0, 0.05))
+    plt.yticks(np.arange(0, 0.05, step=0.01))
     plt.title('Model Loss')
     plt.ylabel('Loss')
     plt.xlabel('Epoch')
@@ -496,9 +526,9 @@ def get_model(tensor_shape, batch_size, predict_size):
     model = tf.keras.Sequential()
     model.add(tf.keras.layers.InputLayer(
         input_shape=tensor_shape,
-        batch_size=batch_size,
+        batch_size=batch_size))
         #sparse=True,
-        dtype=tf.float16))
+        #dtype=tf.float16))
     model.add(tf.keras.layers.LSTM(units=tensor_shape[1], return_sequences=True))
     model.add(tf.keras.layers.Dropout(0.25))
     #step_down = int(tensor_shape[1]/4)
